@@ -1,7 +1,7 @@
 MOGL
 ====
 
-MOGL is an OpenGL Matlab toolbox included with the [Psychtoolbox](http://psychtoolbox.org). This is a fork of MOGL.
+MOGL is an OpenGL Matlab toolbox included with the [Psychtoolbox](http://psychtoolbox.org). This is a fork.
 
 License
 =======

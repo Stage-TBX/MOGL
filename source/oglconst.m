@@ -64,25 +64,28 @@ if IsOSX
     AGL=parsefile(sprintf('%s/agl.h', aglheaderpath),'AGL_');
 end;
 
-fname='oglconst.mat';
+mwrite('../wrap/GL.m', GL);
+mwrite('../wrap/GLU.m', GLU);
 
-% save OpenGL-style constants
-if IsOSX
-    save(fname,'GL_*','GLU_*','AGL_*', '-V6');
-    % save structure-style constants to same file
-    save(fname,'GL','GLU','AGL','-append', '-V6');
-end;
+% fname='oglconst.mat';
+% 
+% % save OpenGL-style constants
+% if IsOSX
+%     save(fname,'GL_*','GLU_*','AGL_*', '-V6');
+%     % save structure-style constants to same file
+%     save(fname,'GL','GLU','AGL','-append', '-V6');
+% end;
+% 
+% if IsLinux
+%     save(fname,'GL_*','GLU_*','-V6');
+%     % save structure-style constants to same file
+%     save(fname,'GL','GLU','-append','-V6');
+% end;
+% 
+% % put a copy into the 'core' directory
+% copyfile(fname,'../core');
 
-if IsLinux
-    save(fname,'GL_*','GLU_*','-V6');
-    % save structure-style constants to same file
-    save(fname,'GL','GLU','-append','-V6');
-end;
-
-% put a copy into the 'core' directory
-copyfile(fname,'../core');
-
-return
+end
 
 
 % function to parse header files
@@ -177,7 +180,7 @@ while ~feof(fid),
     end
 
     % add numeric value to struct
-    fprintf(1,'%s\t%-20s\t%s\t%.0f\n',prefix,fieldname,r.value,nvalue);
+    %fprintf(1,'%s\t%-20s\t%s\t%.0f\n',prefix,fieldname,r.value,nvalue);
     S=setfield(S,fieldname,nvalue); %#ok<*SFLD>
     
     % define OpenGL-style variable in calling workspace
@@ -188,4 +191,27 @@ end
 % close file
 fclose(fid);
 
-return
+end
+
+function mwrite(file, s)
+    
+if exist(file, 'file')
+    delete(file);
+end
+
+[path, name, ext] = fileparts(file);
+
+fid = fopen(file, 'w');
+fprintf(fid, 'classdef %s\n', name);
+fprintf(fid, '\tproperties (Constant)\n');
+
+fields = fieldnames(s);
+for i = 1:length(fields)
+    fprintf(fid, '\t\t%s = %d\n', fields{i}, s.(fields{i}));
+end
+
+fprintf(fid, '\tend\n');
+fprintf(fid, 'end');
+fclose(fid);
+
+end

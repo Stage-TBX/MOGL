@@ -182,12 +182,13 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     }
 
     #endif
-
+    
     // Is this the first invocation of moglcore?
     if (firsttime) {
         // Yes. Initialize GLEW, the GL Extension Wrangler Library. This will
         // auto-detect and dynamically link/bind all core OpenGL functionality
         // as well as all possible OpenGL extensions on OS-X, Linux and Windows.
+        glewExperimental=TRUE;
         err = GLEW_OK;
         #ifdef PTB_USE_WAFFLE
         // Linux is special: If we use the Waffle backend for display system binding, then our display backend

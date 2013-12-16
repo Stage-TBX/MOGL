@@ -66,6 +66,9 @@ end;
 
 mwrite('../wrap/GL.m', GL);
 mwrite('../wrap/GLU.m', GLU);
+if IsOSX
+    mwrite('../wrap/AGL.m', AGL);
+end
 
 % fname='oglconst.mat';
 % 

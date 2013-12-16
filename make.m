@@ -1,6 +1,6 @@
 function make()
     if ~ismac
-        error('This function is Mac only at the moment');
+        error('This function is currently Mac only');
     end
 
     filePath = mfilename('fullpath');

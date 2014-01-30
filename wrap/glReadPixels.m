@@ -45,10 +45,7 @@ else
     if bufferoffset < 0
         error('You must provide a valid, zero or positive integral "bufferoffset" into the PBO!');
     end
-end    
- 
-% check format and type
-global GL
+end
 
 if x < 0 || y<0
     error('Invalid (negative) (x,y) offset passed to glReadPixels.');

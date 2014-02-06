@@ -104,10 +104,7 @@ if bufferoffset == -1
     moglcore( 'glReadPixels', x, y, width, height, format, type, pixels );
 
     % Rearrange data in Matlab friendly format:
-    retpixels = zeros(size(pixels,2), size(pixels,3), size(pixels,1), pclass);
-    for i=1:numperpixel
-        retpixels(:,:,i) = pixels(i,:,:);
-    end;
+    retpixels = permute(pixels, [2, 3, 1]);
 else
     % Readback into bound Pixelbuffer object PBO:
     moglcore( 'glReadPixels', x, y, width, height, format, type, bufferoffset );

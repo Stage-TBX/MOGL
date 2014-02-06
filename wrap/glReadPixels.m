@@ -70,8 +70,6 @@ end;
 
 if bufferoffset == -1
     % Readback to host memory, aka Matlab- or Octave- matrix:
-    % Allocate memory:
-    pixels=zeros(numperpixel, width, height);
 
     % Tell OpenGL that we accept byte-aligned aka unaligned data.
     glPixelStorei(GL.PACK_ALIGNMENT, 1);
@@ -79,29 +77,28 @@ if bufferoffset == -1
     % Perform proper type-cast:
     switch(type)
         case GL.UNSIGNED_BYTE
-            pixels = uint8(pixels);
             pclass = 'uint8';
         case GL.BYTE
-            pixels = int8(pixels);
             pclass = 'int8';
         case GL.UNSIGNED_SHORT
-            pixels = uint16(pixels);
             pclass = 'uint16';
         case GL.SHORT
-            pixels = int16(pixels);
             pclass = 'int16';
         case GL.UNSIGNED_INT
-            pixels = uint32(pixels);
             pclass = 'uint32';
         case GL.INT
-            pixels = int32(pixels);
             pclass = 'int32';
         case GL.FLOAT
-            pixels = moglsingle(pixels);
             pclass = 'double';
         otherwise
             error('Invalid type argument passed to glReadPixels()!');
     end;
+    
+    % Allocate memory:
+    pixels = zeros(numperpixel, width, height, pclass);
+    if type == GL.FLOAT
+        pixels = moglsingle(pixels);
+    end
 
     % Execute actual call:
     moglcore( 'glReadPixels', x, y, width, height, format, type, pixels );

@@ -18,8 +18,6 @@ if nargin~=4 && nargin~=5,
 end
 
 % check format and type
-global GL
-
 switch(format)
     case {GL.RED, GL.GREEN, GL.BLUE, GL.ALPHA, GL.LUMINANCE, GL.INTENSITY, GL.DEPTH_COMPONENT, GL.STENCIL_INDEX }
         numperpixel = 1;

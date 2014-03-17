@@ -95,16 +95,13 @@ if bufferoffset == -1
     end;
     
     % Allocate memory:
-    pixels = zeros(numperpixel, width, height, pclass);
+    retpixels = zeros(numperpixel, width, height, pclass);
     if type == GL.FLOAT
-        pixels = moglsingle(pixels);
+        retpixels = moglsingle(retpixels);
     end
 
     % Execute actual call:
-    moglcore( 'glReadPixels', x, y, width, height, format, type, pixels );
-
-    % Rearrange data in Matlab friendly format:
-    retpixels = permute(pixels, [2, 3, 1]);
+    moglcore( 'glReadPixels', x, y, width, height, format, type, retpixels );
 else
     % Readback into bound Pixelbuffer object PBO:
     moglcore( 'glReadPixels', x, y, width, height, format, type, bufferoffset );

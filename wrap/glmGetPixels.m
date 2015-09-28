@@ -18,7 +18,7 @@ global GL
 format=GL.RGB;
 type=GL.UNSIGNED_BYTE;
 width=rect(3)-rect(1);
-height=rect(4)-rect)2);
+height=rect(4)-rect(2);
 
 % allocate return argument
 padn=mod( 4-mod(3*width,4) , 4 );

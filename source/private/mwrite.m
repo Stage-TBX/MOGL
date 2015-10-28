@@ -64,8 +64,10 @@ if M.allocate,
 	fprintf(fid,'\n');
 end
 % call to moglcore
-if ~isempty(M.mogl_out),
+if numel(M.arg_out)==1,
 	fprintf(fid,'%s = ',M.mogl_out{1});
+elseif numel(M.arg_out)>1,
+    fprintf(fid,'[ %s ] = ',commalist(M.mogl_out{:}));
 end
 if openal
 	fprintf(fid,'moalcore( %s );\n\n',commalist(sprintf('''%s''',funcp.fname),M.mogl_in{:}) );

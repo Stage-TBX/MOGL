@@ -17,6 +17,7 @@ end
 
 params = int32(zeros(1,bufSize));
 
-moglcore( 'glGetInternalformativ', target, internalformat, pname, bufSize, params );
+params = moglcore( 'glGetInternalformativ', target, internalformat, pname, bufSize, params );
 
 return
+% ---skip---

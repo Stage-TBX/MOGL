@@ -21,6 +21,7 @@ end
 img = uint8(zeros(1, glGetTexLevelParameteriv(target, lod, GL.TEXTURE_COMPRESSED_IMAGE_SIZE)));
 
 % Go get it:
-moglcore( 'glGetCompressedTexImage', target, lod, img );
+img = moglcore( 'glGetCompressedTexImage', target, lod, img );
 
 return
+% ---skip---

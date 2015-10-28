@@ -19,7 +19,7 @@ end
 f=glGetLightfv(light,pname);
 
 params = int32(zeros(size(f)));
-moglcore( 'glGetLightiv', light, pname, params );
+params = moglcore( 'glGetLightiv', light, pname, params );
 
 return
 % ---skip---

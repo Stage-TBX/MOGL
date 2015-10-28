@@ -17,6 +17,7 @@ end
 
 ids = uint32(zeros(1,n));
 
-moglcore( 'glGenTransformFeedbacks', n, ids );
+ids = moglcore( 'glGenTransformFeedbacks', n, ids );
 
 return
+% ---skip---

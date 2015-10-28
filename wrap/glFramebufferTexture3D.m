@@ -6,7 +6,7 @@ function glFramebufferTexture3D( target, attachment, textarget, texture, level, 
 %
 % C function:  void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=6,
     error('invalid number of arguments');

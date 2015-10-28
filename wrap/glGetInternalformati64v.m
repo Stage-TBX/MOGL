@@ -17,6 +17,7 @@ end
 
 params = int64(zeros(1,bufSize));
 
-moglcore( 'glGetInternalformati64v', target, internalformat, pname, bufSize, params );
+params = moglcore( 'glGetInternalformati64v', target, internalformat, pname, bufSize, params );
 
 return
+% ---skip---

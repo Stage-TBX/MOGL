@@ -19,7 +19,7 @@ end
 f=glGetPixelMapfv(map);
 
 values = uint32(zeros(size(f)));
-moglcore( 'glGetPixelMapuiv', map, values );
+values = moglcore( 'glGetPixelMapuiv', map, values );
 
 return
 % ---skip---

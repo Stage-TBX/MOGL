@@ -19,7 +19,7 @@ end
 f=glGetTexGendv(coord,pname);
 
 params = int32(zeros(size(f)));
-moglcore( 'glGetTexGeniv', coord, pname, params );
+params = moglcore( 'glGetTexGeniv', coord, pname, params );
 
 return
 % ---skip---

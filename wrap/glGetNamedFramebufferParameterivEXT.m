@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetNamedFramebufferParameterivEXT', framebuffer, pname, params );
+params = moglcore( 'glGetNamedFramebufferParameterivEXT', framebuffer, pname, params );
 
 return
+% ---skip---

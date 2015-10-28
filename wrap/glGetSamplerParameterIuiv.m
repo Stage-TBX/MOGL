@@ -16,6 +16,7 @@ if nargin~=2,
 end
 
 params=uint32(repmat(intmax('uint32'), [ 16 1 ]));
-moglcore( 'glGetSamplerParameterIuiv', sampler, pname, params );
+params = moglcore( 'glGetSamplerParameterIuiv', sampler, pname, params );
 params = params(find(params~=intmax('uint32')));
 return
+% ---skip---

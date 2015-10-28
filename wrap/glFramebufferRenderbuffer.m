@@ -6,7 +6,7 @@ function glFramebufferRenderbuffer( target, attachment, renderbuffertarget, rend
 %
 % C function:  void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

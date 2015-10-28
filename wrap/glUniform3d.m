@@ -6,7 +6,7 @@ function glUniform3d( location, x, y, z )
 %
 % C function:  void glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

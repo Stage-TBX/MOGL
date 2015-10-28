@@ -6,7 +6,7 @@ function params = glGetnUniformfvARB( program, location, bufSize )
 %
 % C function:  void glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat* params)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 % ---allocate---
 
@@ -16,6 +16,6 @@ end
 
 params = single(0);
 
-moglcore( 'glGetnUniformfvARB', program, location, bufSize, params );
+params = moglcore( 'glGetnUniformfvARB', program, location, bufSize, params );
 
 return

@@ -6,10 +6,9 @@ function data = glGetFloati_v( target, index )
 %
 % C function:  void glGetFloati_v(GLenum target, GLuint index, GLfloat* data)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 % ---allocate---
-% ---protected---
 
 if nargin~=2,
     error('invalid number of arguments');
@@ -17,6 +16,6 @@ end
 
 data = single(0);
 
-moglcore( 'glGetFloati_v', target, index, data );
+data = moglcore( 'glGetFloati_v', target, index, data );
 
 return

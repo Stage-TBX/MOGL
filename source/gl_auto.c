@@ -2,7 +2,7 @@
 /*
  * gl_auto.c
  *
- * 30-Aug-2012 -- created (moglgen)
+ * 28-Oct-2015 -- created (moglgen)
  *
  */
 
@@ -31,6 +31,7 @@ void gl_aretexturesresident( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 	*mxGetPr(plhs[0])=(double)glAreTexturesResident((GLsizei)mxGetScalar(prhs[0]),
 		(const GLuint*)mxGetData(prhs[1]),
 		(GLboolean*)mxGetData(prhs[2]));
+	plhs[1]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -990,6 +991,7 @@ void gl_gentextures( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	if (NULL == glGenTextures) mogl_glunsupported("glGenTextures");
 	glGenTextures((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -998,6 +1000,7 @@ void gl_getbooleanv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	if (NULL == glGetBooleanv) mogl_glunsupported("glGetBooleanv");
 	glGetBooleanv((GLenum)mxGetScalar(prhs[0]),
 		(GLboolean*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1006,62 +1009,7 @@ void gl_getclipplane( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 	if (NULL == glGetClipPlane) mogl_glunsupported("glGetClipPlane");
 	glGetClipPlane((GLenum)mxGetScalar(prhs[0]),
 		(GLdouble*)mxGetData(prhs[1]));
-
-}
-
-void gl_getcolortable( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetColorTable) mogl_glunsupported("glGetColorTable");
-	glGetColorTable((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLvoid*)mxGetData(prhs[3]));
-
-}
-
-void gl_getcolortableparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetColorTableParameterfv) mogl_glunsupported("glGetColorTableParameterfv");
-	glGetColorTableParameterfv((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]));
-
-}
-
-void gl_getcolortableparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetColorTableParameteriv) mogl_glunsupported("glGetColorTableParameteriv");
-	glGetColorTableParameteriv((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLint*)mxGetData(prhs[2]));
-
-}
-
-void gl_getconvolutionfilter( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetConvolutionFilter) mogl_glunsupported("glGetConvolutionFilter");
-	glGetConvolutionFilter((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLvoid*)mxGetData(prhs[3]));
-
-}
-
-void gl_getconvolutionparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetConvolutionParameterfv) mogl_glunsupported("glGetConvolutionParameterfv");
-	glGetConvolutionParameterfv((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]));
-
-}
-
-void gl_getconvolutionparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetConvolutionParameteriv) mogl_glunsupported("glGetConvolutionParameteriv");
-	glGetConvolutionParameteriv((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1070,6 +1018,7 @@ void gl_getdoublev( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 	if (NULL == glGetDoublev) mogl_glunsupported("glGetDoublev");
 	glGetDoublev((GLenum)mxGetScalar(prhs[0]),
 		(GLdouble*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1086,35 +1035,7 @@ void gl_getfloatv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) 
 	if (NULL == glGetFloatv) mogl_glunsupported("glGetFloatv");
 	glGetFloatv((GLenum)mxGetScalar(prhs[0]),
 		(GLfloat*)mxGetData(prhs[1]));
-
-}
-
-void gl_gethistogram( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetHistogram) mogl_glunsupported("glGetHistogram");
-	glGetHistogram((GLenum)mxGetScalar(prhs[0]),
-		(GLboolean)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(GLvoid*)mxGetData(prhs[4]));
-
-}
-
-void gl_gethistogramparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetHistogramParameterfv) mogl_glunsupported("glGetHistogramParameterfv");
-	glGetHistogramParameterfv((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]));
-
-}
-
-void gl_gethistogramparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetHistogramParameteriv) mogl_glunsupported("glGetHistogramParameteriv");
-	glGetHistogramParameteriv((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1123,6 +1044,7 @@ void gl_getintegerv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	if (NULL == glGetIntegerv) mogl_glunsupported("glGetIntegerv");
 	glGetIntegerv((GLenum)mxGetScalar(prhs[0]),
 		(GLint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1132,6 +1054,7 @@ void gl_getlightfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 	glGetLightfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1141,6 +1064,7 @@ void gl_getlightiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 	glGetLightiv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1150,6 +1074,7 @@ void gl_getmapdv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 	glGetMapdv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLdouble*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1159,6 +1084,7 @@ void gl_getmapfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 	glGetMapfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1168,6 +1094,7 @@ void gl_getmapiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 	glGetMapiv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1177,6 +1104,7 @@ void gl_getmaterialfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 	glGetMaterialfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1186,17 +1114,7 @@ void gl_getmaterialiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 	glGetMaterialiv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
-
-}
-
-void gl_getminmax( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetMinmax) mogl_glunsupported("glGetMinmax");
-	glGetMinmax((GLenum)mxGetScalar(prhs[0]),
-		(GLboolean)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(GLvoid*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1206,6 +1124,7 @@ void gl_getminmaxparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray
 	glGetMinmaxParameterfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1215,6 +1134,7 @@ void gl_getminmaxparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArray
 	glGetMinmaxParameteriv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1223,6 +1143,7 @@ void gl_getpixelmapfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 	if (NULL == glGetPixelMapfv) mogl_glunsupported("glGetPixelMapfv");
 	glGetPixelMapfv((GLenum)mxGetScalar(prhs[0]),
 		(GLfloat*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1231,6 +1152,7 @@ void gl_getpixelmapuiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs
 	if (NULL == glGetPixelMapuiv) mogl_glunsupported("glGetPixelMapuiv");
 	glGetPixelMapuiv((GLenum)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1239,6 +1161,7 @@ void gl_getpixelmapusv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs
 	if (NULL == glGetPixelMapusv) mogl_glunsupported("glGetPixelMapusv");
 	glGetPixelMapusv((GLenum)mxGetScalar(prhs[0]),
 		(GLushort*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -1246,18 +1169,7 @@ void gl_getpolygonstipple( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 
 	if (NULL == glGetPolygonStipple) mogl_glunsupported("glGetPolygonStipple");
 	glGetPolygonStipple((GLubyte*)mxGetData(prhs[0]));
-
-}
-
-void gl_getseparablefilter( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetSeparableFilter) mogl_glunsupported("glGetSeparableFilter");
-	glGetSeparableFilter((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLvoid*)mxGetData(prhs[3]),
-		(GLvoid*)mxGetData(prhs[4]),
-		(GLvoid*)mxGetData(prhs[5]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[0]);
 
 }
 
@@ -1267,6 +1179,7 @@ void gl_gettexenvfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetTexEnvfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1276,6 +1189,7 @@ void gl_gettexenviv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetTexEnviv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1285,6 +1199,7 @@ void gl_gettexgendv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetTexGendv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLdouble*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1294,6 +1209,7 @@ void gl_gettexgenfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetTexGenfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1303,6 +1219,7 @@ void gl_gettexgeniv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetTexGeniv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1314,6 +1231,7 @@ void gl_getteximage( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLenum)mxGetScalar(prhs[3]),
 		(GLvoid*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -1324,6 +1242,7 @@ void gl_gettexlevelparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArr
 		(GLint)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLfloat*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -1334,6 +1253,7 @@ void gl_gettexlevelparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArr
 		(GLint)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -1343,6 +1263,7 @@ void gl_gettexparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 	glGetTexParameterfv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -1352,6 +1273,7 @@ void gl_gettexparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 	glGetTexParameteriv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -3242,6 +3164,7 @@ void gl_getcompressedteximage( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 	glGetCompressedTexImage((GLenum)mxGetScalar(prhs[0]),
 		(GLint)mxGetScalar(prhs[1]),
 		(GLvoid*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -3895,6 +3818,7 @@ void gl_genqueries( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 	if (NULL == glGenQueries) mogl_glunsupported("glGenQueries");
 	glGenQueries((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -3935,6 +3859,7 @@ void gl_getqueryiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 	glGetQueryiv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -3944,6 +3869,7 @@ void gl_getqueryobjectiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 	glGetQueryObjectiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -3953,6 +3879,7 @@ void gl_getqueryobjectuiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 	glGetQueryObjectuiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLuint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -3977,6 +3904,7 @@ void gl_genbuffers( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] )
 	if (NULL == glGenBuffers) mogl_glunsupported("glGenBuffers");
 	glGenBuffers((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -4005,6 +3933,7 @@ void gl_getbuffersubdata( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLint)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLvoid*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -4031,6 +3960,7 @@ void gl_getbufferparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArray
 	glGetBufferParameteriv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4371,6 +4301,7 @@ void gl_getvertexattribdv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 	glGetVertexAttribdv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLdouble*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4380,6 +4311,7 @@ void gl_getvertexattribfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 	glGetVertexAttribfv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4389,6 +4321,7 @@ void gl_getvertexattribiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 	glGetVertexAttribiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4666,6 +4599,7 @@ void gl_getshaderiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetShaderiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4675,6 +4609,7 @@ void gl_getprogramiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 	glGetProgramiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4685,6 +4620,8 @@ void gl_getattachedshaders( int nlhs, mxArray *plhs[], int nrhs, const mxArray *
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLuint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -4695,6 +4632,8 @@ void gl_getshaderinfolog( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLchar*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -4705,6 +4644,8 @@ void gl_getprograminfolog( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLchar*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -4727,6 +4668,10 @@ void gl_getactiveuniform( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLint*)mxGetData(prhs[4]),
 		(GLenum*)mxGetData(prhs[5]),
 		(GLchar*)mxGetData(prhs[6]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[2]=mxCreateSharedDataCopy(prhs[5]);
+	plhs[3]=mxCreateSharedDataCopy(prhs[6]);
 
 }
 
@@ -4736,6 +4681,7 @@ void gl_getuniformfv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 	glGetUniformfv((GLuint)mxGetScalar(prhs[0]),
 		(GLint)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4745,6 +4691,7 @@ void gl_getuniformiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 	glGetUniformiv((GLuint)mxGetScalar(prhs[0]),
 		(GLint)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -4755,6 +4702,8 @@ void gl_getshadersource( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLchar*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -4777,6 +4726,10 @@ void gl_getactiveattrib( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 		(GLint*)mxGetData(prhs[4]),
 		(GLenum*)mxGetData(prhs[5]),
 		(GLchar*)mxGetData(prhs[6]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[2]=mxCreateSharedDataCopy(prhs[5]);
+	plhs[3]=mxCreateSharedDataCopy(prhs[6]);
 
 }
 
@@ -4874,450 +4827,6 @@ void gl_uniformmatrix4x3fv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLboolean)mxGetScalar(prhs[2]),
 		(const GLfloat*)mxGetData(prhs[3]));
-
-}
-
-void glu_begincurve( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBeginCurve) mogl_glunsupported("gluBeginCurve");
-	gluBeginCurve((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_beginsurface( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBeginSurface) mogl_glunsupported("gluBeginSurface");
-	gluBeginSurface((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_begintrim( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBeginTrim) mogl_glunsupported("gluBeginTrim");
-	gluBeginTrim((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_build1dmipmaplevels( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBuild1DMipmapLevels) mogl_glunsupported("gluBuild1DMipmapLevels");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluBuild1DMipmapLevels((GLenum)mxGetScalar(prhs[0]),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(GLenum)mxGetScalar(prhs[4]),
-		(GLint)mxGetScalar(prhs[5]),
-		(GLint)mxGetScalar(prhs[6]),
-		(GLint)mxGetScalar(prhs[7]),
-		(const void*)mxGetData(prhs[8]));
-
-}
-
-void glu_build1dmipmaps( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBuild1DMipmaps) mogl_glunsupported("gluBuild1DMipmaps");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluBuild1DMipmaps((GLenum)mxGetScalar(prhs[0]),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(GLenum)mxGetScalar(prhs[4]),
-		(const void*)mxGetData(prhs[5]));
-
-}
-
-void glu_build2dmipmaplevels( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBuild2DMipmapLevels) mogl_glunsupported("gluBuild2DMipmapLevels");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluBuild2DMipmapLevels((GLenum)mxGetScalar(prhs[0]),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLenum)mxGetScalar(prhs[4]),
-		(GLenum)mxGetScalar(prhs[5]),
-		(GLint)mxGetScalar(prhs[6]),
-		(GLint)mxGetScalar(prhs[7]),
-		(GLint)mxGetScalar(prhs[8]),
-		(const void*)mxGetData(prhs[9]));
-
-}
-
-void glu_build2dmipmaps( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBuild2DMipmaps) mogl_glunsupported("gluBuild2DMipmaps");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluBuild2DMipmaps((GLenum)mxGetScalar(prhs[0]),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLenum)mxGetScalar(prhs[4]),
-		(GLenum)mxGetScalar(prhs[5]),
-		(const void*)mxGetData(prhs[6]));
-
-}
-
-void glu_build3dmipmaplevels( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBuild3DMipmapLevels) mogl_glunsupported("gluBuild3DMipmapLevels");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluBuild3DMipmapLevels((GLenum)mxGetScalar(prhs[0]),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLsizei)mxGetScalar(prhs[4]),
-		(GLenum)mxGetScalar(prhs[5]),
-		(GLenum)mxGetScalar(prhs[6]),
-		(GLint)mxGetScalar(prhs[7]),
-		(GLint)mxGetScalar(prhs[8]),
-		(GLint)mxGetScalar(prhs[9]),
-		(const void*)mxGetData(prhs[10]));
-
-}
-
-void glu_build3dmipmaps( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluBuild3DMipmaps) mogl_glunsupported("gluBuild3DMipmaps");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluBuild3DMipmaps((GLenum)mxGetScalar(prhs[0]),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLsizei)mxGetScalar(prhs[4]),
-		(GLenum)mxGetScalar(prhs[5]),
-		(GLenum)mxGetScalar(prhs[6]),
-		(const void*)mxGetData(prhs[7]));
-
-}
-
-void glu_checkextension( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluCheckExtension) mogl_glunsupported("gluCheckExtension");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluCheckExtension((const GLubyte*)mxGetData(prhs[0]),
-		(const GLubyte*)mxGetData(prhs[1]));
-
-}
-
-void glu_cylinder( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluCylinder) mogl_glunsupported("gluCylinder");
-	gluCylinder((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLdouble)mxGetScalar(prhs[3]),
-		(GLint)mxGetScalar(prhs[4]),
-		(GLint)mxGetScalar(prhs[5]));
-
-}
-
-void glu_deletenurbsrenderer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluDeleteNurbsRenderer) mogl_glunsupported("gluDeleteNurbsRenderer");
-	gluDeleteNurbsRenderer((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_deletequadric( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluDeleteQuadric) mogl_glunsupported("gluDeleteQuadric");
-	gluDeleteQuadric((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_disk( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluDisk) mogl_glunsupported("gluDisk");
-	gluDisk((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLint)mxGetScalar(prhs[3]),
-		(GLint)mxGetScalar(prhs[4]));
-
-}
-
-void glu_endcurve( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluEndCurve) mogl_glunsupported("gluEndCurve");
-	gluEndCurve((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_endsurface( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluEndSurface) mogl_glunsupported("gluEndSurface");
-	gluEndSurface((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_endtrim( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluEndTrim) mogl_glunsupported("gluEndTrim");
-	gluEndTrim((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])));
-
-}
-
-void glu_getnurbsproperty( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluGetNurbsProperty) mogl_glunsupported("gluGetNurbsProperty");
-	gluGetNurbsProperty((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]));
-
-}
-
-void glu_gettessproperty( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluGetTessProperty) mogl_glunsupported("gluGetTessProperty");
-	gluGetTessProperty((GLUtesselator*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLdouble*)mxGetData(prhs[2]));
-
-}
-
-void glu_loadsamplingmatrices( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluLoadSamplingMatrices) mogl_glunsupported("gluLoadSamplingMatrices");
-	gluLoadSamplingMatrices((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(const GLfloat*)mxGetData(prhs[1]),
-		(const GLfloat*)mxGetData(prhs[2]),
-		(const GLint*)mxGetData(prhs[3]));
-
-}
-
-void glu_lookat( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluLookAt) mogl_glunsupported("gluLookAt");
-	gluLookAt((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLdouble)mxGetScalar(prhs[3]),
-		(GLdouble)mxGetScalar(prhs[4]),
-		(GLdouble)mxGetScalar(prhs[5]),
-		(GLdouble)mxGetScalar(prhs[6]),
-		(GLdouble)mxGetScalar(prhs[7]),
-		(GLdouble)mxGetScalar(prhs[8]));
-
-}
-
-void glu_newnurbsrenderer( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluNewNurbsRenderer) mogl_glunsupported("gluNewNurbsRenderer");
-	plhs[0]=mxCreateNumericMatrix(1,1,mxDOUBLE_CLASS,mxREAL);
-	*(double *)mxGetData(plhs[0])=PsychPtrToDouble((void*) gluNewNurbsRenderer());
-
-}
-
-void glu_newquadric( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluNewQuadric) mogl_glunsupported("gluNewQuadric");
-	plhs[0]=mxCreateNumericMatrix(1,1,mxDOUBLE_CLASS,mxREAL);
-	*(double *)mxGetData(plhs[0])=PsychPtrToDouble((void*) gluNewQuadric());
-
-}
-
-void glu_nurbscurve( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluNurbsCurve) mogl_glunsupported("gluNurbsCurve");
-	gluNurbsCurve((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]),
-		(GLint)mxGetScalar(prhs[3]),
-		(GLfloat*)mxGetData(prhs[4]),
-		(GLint)mxGetScalar(prhs[5]),
-		(GLenum)mxGetScalar(prhs[6]));
-
-}
-
-void glu_nurbsproperty( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluNurbsProperty) mogl_glunsupported("gluNurbsProperty");
-	gluNurbsProperty((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLfloat)mxGetScalar(prhs[2]));
-
-}
-
-void glu_nurbssurface( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluNurbsSurface) mogl_glunsupported("gluNurbsSurface");
-	gluNurbsSurface((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]),
-		(GLint)mxGetScalar(prhs[3]),
-		(GLfloat*)mxGetData(prhs[4]),
-		(GLint)mxGetScalar(prhs[5]),
-		(GLint)mxGetScalar(prhs[6]),
-		(GLfloat*)mxGetData(prhs[7]),
-		(GLint)mxGetScalar(prhs[8]),
-		(GLint)mxGetScalar(prhs[9]),
-		(GLenum)mxGetScalar(prhs[10]));
-
-}
-
-void glu_ortho2d( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluOrtho2D) mogl_glunsupported("gluOrtho2D");
-	gluOrtho2D((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLdouble)mxGetScalar(prhs[3]));
-
-}
-
-void glu_partialdisk( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluPartialDisk) mogl_glunsupported("gluPartialDisk");
-	gluPartialDisk((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLint)mxGetScalar(prhs[3]),
-		(GLint)mxGetScalar(prhs[4]),
-		(GLdouble)mxGetScalar(prhs[5]),
-		(GLdouble)mxGetScalar(prhs[6]));
-
-}
-
-void glu_perspective( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluPerspective) mogl_glunsupported("gluPerspective");
-	gluPerspective((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLdouble)mxGetScalar(prhs[3]));
-
-}
-
-void glu_pickmatrix( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluPickMatrix) mogl_glunsupported("gluPickMatrix");
-	gluPickMatrix((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLdouble)mxGetScalar(prhs[3]),
-		(GLint*)mxGetData(prhs[4]));
-
-}
-
-void glu_project( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluProject) mogl_glunsupported("gluProject");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluProject((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(const GLdouble*)mxGetData(prhs[3]),
-		(const GLdouble*)mxGetData(prhs[4]),
-		(const GLint*)mxGetData(prhs[5]),
-		(GLdouble*)mxGetData(prhs[6]),
-		(GLdouble*)mxGetData(prhs[7]),
-		(GLdouble*)mxGetData(prhs[8]));
-
-}
-
-void glu_pwlcurve( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluPwlCurve) mogl_glunsupported("gluPwlCurve");
-	gluPwlCurve((GLUnurbs*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLint)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]),
-		(GLint)mxGetScalar(prhs[3]),
-		(GLenum)mxGetScalar(prhs[4]));
-
-}
-
-void glu_quadricdrawstyle( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluQuadricDrawStyle) mogl_glunsupported("gluQuadricDrawStyle");
-	gluQuadricDrawStyle((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLenum)mxGetScalar(prhs[1]));
-
-}
-
-void glu_quadricnormals( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluQuadricNormals) mogl_glunsupported("gluQuadricNormals");
-	gluQuadricNormals((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLenum)mxGetScalar(prhs[1]));
-
-}
-
-void glu_quadricorientation( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluQuadricOrientation) mogl_glunsupported("gluQuadricOrientation");
-	gluQuadricOrientation((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLenum)mxGetScalar(prhs[1]));
-
-}
-
-void glu_quadrictexture( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluQuadricTexture) mogl_glunsupported("gluQuadricTexture");
-	gluQuadricTexture((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLboolean)mxGetScalar(prhs[1]));
-
-}
-
-void glu_scaleimage( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluScaleImage) mogl_glunsupported("gluScaleImage");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluScaleImage((GLenum)mxGetScalar(prhs[0]),
-		(GLsizei)mxGetScalar(prhs[1]),
-		(GLsizei)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(const void*)mxGetData(prhs[4]),
-		(GLsizei)mxGetScalar(prhs[5]),
-		(GLsizei)mxGetScalar(prhs[6]),
-		(GLenum)mxGetScalar(prhs[7]),
-		(GLvoid*)mxGetData(prhs[8]));
-
-}
-
-void glu_sphere( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluSphere) mogl_glunsupported("gluSphere");
-	gluSphere((GLUquadric*) PsychDoubleToPtr(mxGetScalar(prhs[0])),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLint)mxGetScalar(prhs[2]),
-		(GLint)mxGetScalar(prhs[3]));
-
-}
-
-void glu_unproject( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluUnProject) mogl_glunsupported("gluUnProject");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluUnProject((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(const GLdouble*)mxGetData(prhs[3]),
-		(const GLdouble*)mxGetData(prhs[4]),
-		(const GLint*)mxGetData(prhs[5]),
-		(GLdouble*)mxGetData(prhs[6]),
-		(GLdouble*)mxGetData(prhs[7]),
-		(GLdouble*)mxGetData(prhs[8]));
-
-}
-
-void glu_unproject4( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == gluUnProject4) mogl_glunsupported("gluUnProject4");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)gluUnProject4((GLdouble)mxGetScalar(prhs[0]),
-		(GLdouble)mxGetScalar(prhs[1]),
-		(GLdouble)mxGetScalar(prhs[2]),
-		(GLdouble)mxGetScalar(prhs[3]),
-		(const GLdouble*)mxGetData(prhs[4]),
-		(const GLdouble*)mxGetData(prhs[5]),
-		(const GLint*)mxGetData(prhs[6]),
-		(GLdouble)mxGetScalar(prhs[7]),
-		(GLdouble)mxGetScalar(prhs[8]),
-		(GLdouble*)mxGetData(prhs[9]),
-		(GLdouble*)mxGetData(prhs[10]),
-		(GLdouble*)mxGetData(prhs[11]),
-		(GLdouble*)mxGetData(prhs[12]));
 
 }
 
@@ -5492,6 +5001,7 @@ void gl_genrenderbuffersext( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 	if (NULL == glGenRenderbuffersEXT) mogl_glunsupported("glGenRenderbuffersEXT");
 	glGenRenderbuffersEXT((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -5511,6 +5021,7 @@ void gl_getrenderbufferparameterivext( int nlhs, mxArray *plhs[], int nrhs, cons
 	glGetRenderbufferParameterivEXT((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -5543,6 +5054,7 @@ void gl_genframebuffersext( int nlhs, mxArray *plhs[], int nrhs, const mxArray *
 	if (NULL == glGenFramebuffersEXT) mogl_glunsupported("glGenFramebuffersEXT");
 	glGenFramebuffersEXT((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -5605,6 +5117,7 @@ void gl_getframebufferattachmentparameterivext( int nlhs, mxArray *plhs[], int n
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -5680,6 +5193,7 @@ void gl_genrenderbuffers( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 	if (NULL == glGenRenderbuffers) mogl_glunsupported("glGenRenderbuffers");
 	glGenRenderbuffers((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -5699,6 +5213,7 @@ void gl_getrenderbufferparameteriv( int nlhs, mxArray *plhs[], int nrhs, const m
 	glGetRenderbufferParameteriv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -5731,6 +5246,7 @@ void gl_genframebuffers( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 	if (NULL == glGenFramebuffers) mogl_glunsupported("glGenFramebuffers");
 	glGenFramebuffers((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -5793,6 +5309,7 @@ void gl_getframebufferattachmentparameteriv( int nlhs, mxArray *plhs[], int nrhs
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -5939,6 +5456,7 @@ void gl_genvertexarrays( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 	if (NULL == glGenVertexArrays) mogl_glunsupported("glGenVertexArrays");
 	glGenVertexArrays((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -5950,16 +5468,6 @@ void gl_isvertexarray( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 
 }
 
-void gl_getuniformindices( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetUniformIndices) mogl_glunsupported("glGetUniformIndices");
-	glGetUniformIndices((GLuint)mxGetScalar(prhs[0]),
-		(GLsizei)mxGetScalar(prhs[1]),
-		(const GLchar*)mxGetData(prhs[2]),
-		(GLuint*)mxGetData(prhs[3]));
-
-}
-
 void gl_getactiveuniformsiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
 	if (NULL == glGetActiveUniformsiv) mogl_glunsupported("glGetActiveUniformsiv");
@@ -5968,6 +5476,7 @@ void gl_getactiveuniformsiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 		(const GLuint*)mxGetData(prhs[2]),
 		(GLenum)mxGetScalar(prhs[3]),
 		(GLint*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -5979,6 +5488,8 @@ void gl_getactiveuniformname( int nlhs, mxArray *plhs[], int nrhs, const mxArray
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLsizei*)mxGetData(prhs[3]),
 		(GLchar*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -5998,6 +5509,7 @@ void gl_getactiveuniformblockiv( int nlhs, mxArray *plhs[], int nrhs, const mxAr
 		(GLuint)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -6009,6 +5521,8 @@ void gl_getactiveuniformblockname( int nlhs, mxArray *plhs[], int nrhs, const mx
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLsizei*)mxGetData(prhs[3]),
 		(GLchar*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -6068,18 +5582,6 @@ void gl_drawelementsinstancedbasevertex( int nlhs, mxArray *plhs[], int nrhs, co
 
 }
 
-void gl_multidrawelementsbasevertex( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glMultiDrawElementsBaseVertex) mogl_glunsupported("glMultiDrawElementsBaseVertex");
-	glMultiDrawElementsBaseVertex((GLenum)mxGetScalar(prhs[0]),
-		(const GLsizei*)mxGetData(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(const GLvoid*)mxGetData(prhs[3]),
-		(GLsizei)mxGetScalar(prhs[4]),
-		(const GLint*)mxGetData(prhs[5]));
-
-}
-
 void gl_provokingvertex( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
 	if (NULL == glProvokingVertex) mogl_glunsupported("glProvokingVertex");
@@ -6135,6 +5637,7 @@ void gl_getinteger64v( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 	if (NULL == glGetInteger64v) mogl_glunsupported("glGetInteger64v");
 	glGetInteger64v((GLenum)mxGetScalar(prhs[0]),
 		(GLint64*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -6146,6 +5649,8 @@ void gl_getsynciv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) 
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLsizei*)mxGetData(prhs[3]),
 		(GLint*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -6180,6 +5685,7 @@ void gl_getmultisamplefv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 	glGetMultisamplefv((GLenum)mxGetScalar(prhs[0]),
 		(GLuint)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6271,6 +5777,8 @@ void gl_getnamedstringarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]),
 		(GLchar*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -6281,6 +5789,7 @@ void gl_getnamedstringivarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 		(const GLchar*)mxGetData(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -6308,6 +5817,7 @@ void gl_gensamplers( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	if (NULL == glGenSamplers) mogl_glunsupported("glGenSamplers");
 	glGenSamplers((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -6395,6 +5905,7 @@ void gl_getsamplerparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 	glGetSamplerParameteriv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6404,6 +5915,7 @@ void gl_getsamplerparameteriiv( int nlhs, mxArray *plhs[], int nrhs, const mxArr
 	glGetSamplerParameterIiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6413,6 +5925,7 @@ void gl_getsamplerparameterfv( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 	glGetSamplerParameterfv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6422,6 +5935,7 @@ void gl_getsamplerparameteriuiv( int nlhs, mxArray *plhs[], int nrhs, const mxAr
 	glGetSamplerParameterIuiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLuint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6439,6 +5953,7 @@ void gl_getqueryobjecti64v( int nlhs, mxArray *plhs[], int nrhs, const mxArray *
 	glGetQueryObjecti64v((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint64*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6448,6 +5963,7 @@ void gl_getqueryobjectui64v( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 	glGetQueryObjectui64v((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLuint64*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6966,6 +6482,7 @@ void gl_getuniformdv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 	glGetUniformdv((GLuint)mxGetScalar(prhs[0]),
 		(GLint)mxGetScalar(prhs[1]),
 		(GLdouble*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -6997,6 +6514,7 @@ void gl_getactivesubroutineuniformiv( int nlhs, mxArray *plhs[], int nrhs, const
 		(GLuint)mxGetScalar(prhs[2]),
 		(GLenum)mxGetScalar(prhs[3]),
 		(GLint*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -7009,6 +6527,8 @@ void gl_getactivesubroutineuniformname( int nlhs, mxArray *plhs[], int nrhs, con
 		(GLsizei)mxGetScalar(prhs[3]),
 		(GLsizei*)mxGetData(prhs[4]),
 		(GLchar*)mxGetData(prhs[5]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[5]);
 
 }
 
@@ -7021,6 +6541,8 @@ void gl_getactivesubroutinename( int nlhs, mxArray *plhs[], int nrhs, const mxAr
 		(GLsizei)mxGetScalar(prhs[3]),
 		(GLsizei*)mxGetData(prhs[4]),
 		(GLchar*)mxGetData(prhs[5]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[5]);
 
 }
 
@@ -7039,6 +6561,7 @@ void gl_getuniformsubroutineuiv( int nlhs, mxArray *plhs[], int nrhs, const mxAr
 	glGetUniformSubroutineuiv((GLenum)mxGetScalar(prhs[0]),
 		(GLint)mxGetScalar(prhs[1]),
 		(GLuint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -7049,6 +6572,7 @@ void gl_getprogramstageiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -7089,6 +6613,7 @@ void gl_gentransformfeedbacks( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 	if (NULL == glGenTransformFeedbacks) mogl_glunsupported("glGenTransformFeedbacks");
 	glGenTransformFeedbacks((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -7155,6 +6680,7 @@ void gl_getqueryindexediv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 		(GLuint)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -7183,6 +6709,8 @@ void gl_getshaderprecisionformat( int nlhs, mxArray *plhs[], int nrhs, const mxA
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -7209,6 +6737,9 @@ void gl_getprogrambinary( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLenum*)mxGetData(prhs[3]),
 		(GLvoid*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[2]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -7248,16 +6779,6 @@ void gl_activeshaderprogram( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 
 }
 
-void gl_createshaderprogramv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glCreateShaderProgramv) mogl_glunsupported("glCreateShaderProgramv");
-	plhs[0]=mxCreateDoubleMatrix(1,1,mxREAL);
-	*mxGetPr(plhs[0])=(double)glCreateShaderProgramv((GLenum)mxGetScalar(prhs[0]),
-		(GLsizei)mxGetScalar(prhs[1]),
-		(const GLchar*)mxGetData(prhs[2]));
-
-}
-
 void gl_bindprogrampipeline( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
 
 	if (NULL == glBindProgramPipeline) mogl_glunsupported("glBindProgramPipeline");
@@ -7278,6 +6799,7 @@ void gl_genprogrampipelines( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 	if (NULL == glGenProgramPipelines) mogl_glunsupported("glGenProgramPipelines");
 	glGenProgramPipelines((GLsizei)mxGetScalar(prhs[0]),
 		(GLuint*)mxGetData(prhs[1]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -7295,6 +6817,7 @@ void gl_getprogrampipelineiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray
 	glGetProgramPipelineiv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -7838,6 +7361,8 @@ void gl_getprogrampipelineinfolog( int nlhs, mxArray *plhs[], int nrhs, const mx
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLchar*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -7928,6 +7453,7 @@ void gl_getvertexattribldv( int nlhs, mxArray *plhs[], int nrhs, const mxArray *
 	glGetVertexAttribLdv((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLdouble*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -8011,6 +7537,7 @@ void gl_getfloati_v( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] 
 	glGetFloati_v((GLenum)mxGetScalar(prhs[0]),
 		(GLuint)mxGetScalar(prhs[1]),
 		(GLfloat*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -8020,6 +7547,7 @@ void gl_getdoublei_v( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 	glGetDoublei_v((GLenum)mxGetScalar(prhs[0]),
 		(GLuint)mxGetScalar(prhs[1]),
 		(GLdouble*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -8059,6 +7587,12 @@ void gl_getdebugmessagelogarb( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 		(GLenum*)mxGetData(prhs[5]),
 		(GLsizei*)mxGetData(prhs[6]),
 		(GLchar*)mxGetData(prhs[7]));
+	plhs[1]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[2]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[3]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[4]=mxCreateSharedDataCopy(prhs[5]);
+	plhs[5]=mxCreateSharedDataCopy(prhs[6]);
+	plhs[6]=mxCreateSharedDataCopy(prhs[7]);
 
 }
 
@@ -8077,6 +7611,7 @@ void gl_getnmapdvarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLdouble*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8087,6 +7622,7 @@ void gl_getnmapfvarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLfloat*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8097,33 +7633,7 @@ void gl_getnmapivarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
-
-}
-
-void gl_getnpixelmapfvarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnPixelMapfvARB) mogl_glunsupported("glGetnPixelMapfvARB");
-	glGetnPixelMapfvARB((GLenum)mxGetScalar(prhs[0]),
-		(GLsizei)mxGetScalar(prhs[1]),
-		(GLfloat*)mxGetData(prhs[2]));
-
-}
-
-void gl_getnpixelmapuivarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnPixelMapuivARB) mogl_glunsupported("glGetnPixelMapuivARB");
-	glGetnPixelMapuivARB((GLenum)mxGetScalar(prhs[0]),
-		(GLsizei)mxGetScalar(prhs[1]),
-		(GLuint*)mxGetData(prhs[2]));
-
-}
-
-void gl_getnpixelmapusvarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnPixelMapusvARB) mogl_glunsupported("glGetnPixelMapusvARB");
-	glGetnPixelMapusvARB((GLenum)mxGetScalar(prhs[0]),
-		(GLsizei)mxGetScalar(prhs[1]),
-		(GLushort*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8132,66 +7642,7 @@ void gl_getnpolygonstipplearb( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 	if (NULL == glGetnPolygonStippleARB) mogl_glunsupported("glGetnPolygonStippleARB");
 	glGetnPolygonStippleARB((GLsizei)mxGetScalar(prhs[0]),
 		(GLubyte*)mxGetData(prhs[1]));
-
-}
-
-void gl_getncolortablearb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnColorTableARB) mogl_glunsupported("glGetnColorTableARB");
-	glGetnColorTableARB((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLvoid*)mxGetData(prhs[4]));
-
-}
-
-void gl_getnconvolutionfilterarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnConvolutionFilterARB) mogl_glunsupported("glGetnConvolutionFilterARB");
-	glGetnConvolutionFilterARB((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLvoid*)mxGetData(prhs[4]));
-
-}
-
-void gl_getnseparablefilterarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnSeparableFilterARB) mogl_glunsupported("glGetnSeparableFilterARB");
-	glGetnSeparableFilterARB((GLenum)mxGetScalar(prhs[0]),
-		(GLenum)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLsizei)mxGetScalar(prhs[3]),
-		(GLvoid*)mxGetData(prhs[4]),
-		(GLsizei)mxGetScalar(prhs[5]),
-		(GLvoid*)mxGetData(prhs[6]),
-		(GLvoid*)mxGetData(prhs[7]));
-
-}
-
-void gl_getnhistogramarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnHistogramARB) mogl_glunsupported("glGetnHistogramARB");
-	glGetnHistogramARB((GLenum)mxGetScalar(prhs[0]),
-		(GLboolean)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(GLsizei)mxGetScalar(prhs[4]),
-		(GLvoid*)mxGetData(prhs[5]));
-
-}
-
-void gl_getnminmaxarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[] ) {
-
-	if (NULL == glGetnMinmaxARB) mogl_glunsupported("glGetnMinmaxARB");
-	glGetnMinmaxARB((GLenum)mxGetScalar(prhs[0]),
-		(GLboolean)mxGetScalar(prhs[1]),
-		(GLenum)mxGetScalar(prhs[2]),
-		(GLenum)mxGetScalar(prhs[3]),
-		(GLsizei)mxGetScalar(prhs[4]),
-		(GLvoid*)mxGetData(prhs[5]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[1]);
 
 }
 
@@ -8204,6 +7655,7 @@ void gl_getnteximagearb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prh
 		(GLenum)mxGetScalar(prhs[3]),
 		(GLsizei)mxGetScalar(prhs[4]),
 		(GLvoid*)mxGetData(prhs[5]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[5]);
 
 }
 
@@ -8218,6 +7670,7 @@ void gl_readnpixelsarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs
 		(GLenum)mxGetScalar(prhs[5]),
 		(GLsizei)mxGetScalar(prhs[6]),
 		(GLvoid*)mxGetData(prhs[7]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[7]);
 
 }
 
@@ -8228,6 +7681,7 @@ void gl_getncompressedteximagearb( int nlhs, mxArray *plhs[], int nrhs, const mx
 		(GLint)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLvoid*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8238,6 +7692,7 @@ void gl_getnuniformfvarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLint)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLfloat*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8248,6 +7703,7 @@ void gl_getnuniformivarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLint)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8258,6 +7714,7 @@ void gl_getnuniformuivarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 		(GLint)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLuint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8268,6 +7725,7 @@ void gl_getnuniformdvarb( int nlhs, mxArray *plhs[], int nrhs, const mxArray *pr
 		(GLint)mxGetScalar(prhs[1]),
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLdouble*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8334,6 +7792,7 @@ void gl_getinternalformativ( int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLsizei)mxGetScalar(prhs[3]),
 		(GLint*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -8344,6 +7803,7 @@ void gl_getactiveatomiccounterbufferiv( int nlhs, mxArray *plhs[], int nrhs, con
 		(GLuint)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8472,6 +7932,12 @@ void gl_getdebugmessagelog( int nlhs, mxArray *plhs[], int nrhs, const mxArray *
 		(GLenum*)mxGetData(prhs[5]),
 		(GLsizei*)mxGetData(prhs[6]),
 		(GLchar*)mxGetData(prhs[7]));
+	plhs[1]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[2]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[3]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[4]=mxCreateSharedDataCopy(prhs[5]);
+	plhs[5]=mxCreateSharedDataCopy(prhs[6]);
+	plhs[6]=mxCreateSharedDataCopy(prhs[7]);
 
 }
 
@@ -8503,6 +7969,8 @@ void gl_getobjectlabel( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs
 		(GLsizei)mxGetScalar(prhs[2]),
 		(GLsizei*)mxGetData(prhs[3]),
 		(GLchar*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -8522,6 +7990,8 @@ void gl_getobjectptrlabel( int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
 		(GLsizei)mxGetScalar(prhs[1]),
 		(GLsizei*)mxGetData(prhs[2]),
 		(GLchar*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8696,6 +8166,7 @@ void gl_getframebufferparameteriv( int nlhs, mxArray *plhs[], int nrhs, const mx
 	glGetFramebufferParameteriv((GLenum)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -8714,6 +8185,7 @@ void gl_getnamedframebufferparameterivext( int nlhs, mxArray *plhs[], int nrhs, 
 	glGetNamedFramebufferParameterivEXT((GLuint)mxGetScalar(prhs[0]),
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLint*)mxGetData(prhs[2]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[2]);
 
 }
 
@@ -8725,6 +8197,7 @@ void gl_getinternalformati64v( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLsizei)mxGetScalar(prhs[3]),
 		(GLint64*)mxGetData(prhs[4]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
 
 }
 
@@ -8816,6 +8289,7 @@ void gl_getprograminterfaceiv( int nlhs, mxArray *plhs[], int nrhs, const mxArra
 		(GLenum)mxGetScalar(prhs[1]),
 		(GLenum)mxGetScalar(prhs[2]),
 		(GLint*)mxGetData(prhs[3]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[3]);
 
 }
 
@@ -8838,6 +8312,8 @@ void gl_getprogramresourcename( int nlhs, mxArray *plhs[], int nrhs, const mxArr
 		(GLsizei)mxGetScalar(prhs[3]),
 		(GLsizei*)mxGetData(prhs[4]),
 		(GLchar*)mxGetData(prhs[5]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[4]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[5]);
 
 }
 
@@ -8852,6 +8328,8 @@ void gl_getprogramresourceiv( int nlhs, mxArray *plhs[], int nrhs, const mxArray
 		(GLsizei)mxGetScalar(prhs[5]),
 		(GLsizei*)mxGetData(prhs[6]),
 		(GLint*)mxGetData(prhs[7]));
+	plhs[0]=mxCreateSharedDataCopy(prhs[6]);
+	plhs[1]=mxCreateSharedDataCopy(prhs[7]);
 
 }
 
@@ -8959,7 +8437,7 @@ void gl_texturestorage3dmultisampleext( int nlhs, mxArray *plhs[], int nrhs, con
 
 }
 
-int gl_auto_map_count=982;
+int gl_auto_map_count=920;
 cmdhandler gl_auto_map[] = {
 { "glAccum",                         gl_accum                            },
 { "glActiveShaderProgram",           gl_activeshaderprogram              },
@@ -9084,7 +8562,6 @@ cmdhandler gl_auto_map[] = {
 { "glCopyTexSubImage3D",             gl_copytexsubimage3d                },
 { "glCreateProgram",                 gl_createprogram                    },
 { "glCreateShader",                  gl_createshader                     },
-{ "glCreateShaderProgramv",          gl_createshaderprogramv             },
 { "glCullFace",                      gl_cullface                         },
 { "glDebugMessageControl",           gl_debugmessagecontrol              },
 { "glDebugMessageControlARB",        gl_debugmessagecontrolarb           },
@@ -9216,13 +8693,7 @@ cmdhandler gl_auto_map[] = {
 { "glGetBufferParameteriv",          gl_getbufferparameteriv             },
 { "glGetBufferSubData",              gl_getbuffersubdata                 },
 { "glGetClipPlane",                  gl_getclipplane                     },
-{ "glGetColorTable",                 gl_getcolortable                    },
-{ "glGetColorTableParameterfv",      gl_getcolortableparameterfv         },
-{ "glGetColorTableParameteriv",      gl_getcolortableparameteriv         },
 { "glGetCompressedTexImage",         gl_getcompressedteximage            },
-{ "glGetConvolutionFilter",          gl_getconvolutionfilter             },
-{ "glGetConvolutionParameterfv",     gl_getconvolutionparameterfv        },
-{ "glGetConvolutionParameteriv",     gl_getconvolutionparameteriv        },
 { "glGetDebugMessageLog",            gl_getdebugmessagelog               },
 { "glGetDebugMessageLogARB",         gl_getdebugmessagelogarb            },
 { "glGetDoublei_v",                  gl_getdoublei_v                     },
@@ -9235,9 +8706,6 @@ cmdhandler gl_auto_map[] = {
 { "glGetFramebufferAttachmentParameterivEXT",gl_getframebufferattachmentparameterivext },
 { "glGetFramebufferParameteriv",     gl_getframebufferparameteriv        },
 { "glGetGraphicsResetStatusARB",     gl_getgraphicsresetstatusarb        },
-{ "glGetHistogram",                  gl_gethistogram                     },
-{ "glGetHistogramParameterfv",       gl_gethistogramparameterfv          },
-{ "glGetHistogramParameteriv",       gl_gethistogramparameteriv          },
 { "glGetInteger64v",                 gl_getinteger64v                    },
 { "glGetIntegerv",                   gl_getintegerv                      },
 { "glGetInternalformati64v",         gl_getinternalformati64v            },
@@ -9249,7 +8717,6 @@ cmdhandler gl_auto_map[] = {
 { "glGetMapiv",                      gl_getmapiv                         },
 { "glGetMaterialfv",                 gl_getmaterialfv                    },
 { "glGetMaterialiv",                 gl_getmaterialiv                    },
-{ "glGetMinmax",                     gl_getminmax                        },
 { "glGetMinmaxParameterfv",          gl_getminmaxparameterfv             },
 { "glGetMinmaxParameteriv",          gl_getminmaxparameteriv             },
 { "glGetMultisamplefv",              gl_getmultisamplefv                 },
@@ -9286,7 +8753,6 @@ cmdhandler gl_auto_map[] = {
 { "glGetSamplerParameterIuiv",       gl_getsamplerparameteriuiv          },
 { "glGetSamplerParameterfv",         gl_getsamplerparameterfv            },
 { "glGetSamplerParameteriv",         gl_getsamplerparameteriv            },
-{ "glGetSeparableFilter",            gl_getseparablefilter               },
 { "glGetShaderInfoLog",              gl_getshaderinfolog                 },
 { "glGetShaderPrecisionFormat",      gl_getshaderprecisionformat         },
 { "glGetShaderSource",               gl_getshadersource                  },
@@ -9305,7 +8771,6 @@ cmdhandler gl_auto_map[] = {
 { "glGetTexParameterfv",             gl_gettexparameterfv                },
 { "glGetTexParameteriv",             gl_gettexparameteriv                },
 { "glGetUniformBlockIndex",          gl_getuniformblockindex             },
-{ "glGetUniformIndices",             gl_getuniformindices                },
 { "glGetUniformLocation",            gl_getuniformlocation               },
 { "glGetUniformSubroutineuiv",       gl_getuniformsubroutineuiv          },
 { "glGetUniformdv",                  gl_getuniformdv                     },
@@ -9315,19 +8780,11 @@ cmdhandler gl_auto_map[] = {
 { "glGetVertexAttribdv",             gl_getvertexattribdv                },
 { "glGetVertexAttribfv",             gl_getvertexattribfv                },
 { "glGetVertexAttribiv",             gl_getvertexattribiv                },
-{ "glGetnColorTableARB",             gl_getncolortablearb                },
 { "glGetnCompressedTexImageARB",     gl_getncompressedteximagearb        },
-{ "glGetnConvolutionFilterARB",      gl_getnconvolutionfilterarb         },
-{ "glGetnHistogramARB",              gl_getnhistogramarb                 },
 { "glGetnMapdvARB",                  gl_getnmapdvarb                     },
 { "glGetnMapfvARB",                  gl_getnmapfvarb                     },
 { "glGetnMapivARB",                  gl_getnmapivarb                     },
-{ "glGetnMinmaxARB",                 gl_getnminmaxarb                    },
-{ "glGetnPixelMapfvARB",             gl_getnpixelmapfvarb                },
-{ "glGetnPixelMapuivARB",            gl_getnpixelmapuivarb               },
-{ "glGetnPixelMapusvARB",            gl_getnpixelmapusvarb               },
 { "glGetnPolygonStippleARB",         gl_getnpolygonstipplearb            },
-{ "glGetnSeparableFilterARB",        gl_getnseparablefilterarb           },
 { "glGetnTexImageARB",               gl_getnteximagearb                  },
 { "glGetnUniformdvARB",              gl_getnuniformdvarb                 },
 { "glGetnUniformfvARB",              gl_getnuniformfvarb                 },
@@ -9415,7 +8872,6 @@ cmdhandler gl_auto_map[] = {
 { "glMultTransposeMatrixf",          gl_multtransposematrixf             },
 { "glMultiDrawArrays",               gl_multidrawarrays                  },
 { "glMultiDrawArraysIndirect",       gl_multidrawarraysindirect          },
-{ "glMultiDrawElementsBaseVertex",   gl_multidrawelementsbasevertex      },
 { "glMultiDrawElementsIndirect",     gl_multidrawelementsindirect        },
 { "glMultiTexCoord1d",               gl_multitexcoord1d                  },
 { "glMultiTexCoord1dv",              gl_multitexcoord1dv                 },
@@ -9885,46 +9341,6 @@ cmdhandler gl_auto_map[] = {
 { "glWindowPos3iv",                  gl_windowpos3iv                     },
 { "glWindowPos3s",                   gl_windowpos3s                      },
 { "glWindowPos3sv",                  gl_windowpos3sv                     },
-{ "gluBeginCurve",                   glu_begincurve                      },
-{ "gluBeginSurface",                 glu_beginsurface                    },
-{ "gluBeginTrim",                    glu_begintrim                       },
-{ "gluBuild1DMipmapLevels",          glu_build1dmipmaplevels             },
-{ "gluBuild1DMipmaps",               glu_build1dmipmaps                  },
-{ "gluBuild2DMipmapLevels",          glu_build2dmipmaplevels             },
-{ "gluBuild2DMipmaps",               glu_build2dmipmaps                  },
-{ "gluBuild3DMipmapLevels",          glu_build3dmipmaplevels             },
-{ "gluBuild3DMipmaps",               glu_build3dmipmaps                  },
-{ "gluCheckExtension",               glu_checkextension                  },
-{ "gluCylinder",                     glu_cylinder                        },
-{ "gluDeleteNurbsRenderer",          glu_deletenurbsrenderer             },
-{ "gluDeleteQuadric",                glu_deletequadric                   },
-{ "gluDisk",                         glu_disk                            },
-{ "gluEndCurve",                     glu_endcurve                        },
-{ "gluEndSurface",                   glu_endsurface                      },
-{ "gluEndTrim",                      glu_endtrim                         },
-{ "gluGetNurbsProperty",             glu_getnurbsproperty                },
-{ "gluGetTessProperty",              glu_gettessproperty                 },
-{ "gluLoadSamplingMatrices",         glu_loadsamplingmatrices            },
-{ "gluLookAt",                       glu_lookat                          },
-{ "gluNewNurbsRenderer",             glu_newnurbsrenderer                },
-{ "gluNewQuadric",                   glu_newquadric                      },
-{ "gluNurbsCurve",                   glu_nurbscurve                      },
-{ "gluNurbsProperty",                glu_nurbsproperty                   },
-{ "gluNurbsSurface",                 glu_nurbssurface                    },
-{ "gluOrtho2D",                      glu_ortho2d                         },
-{ "gluPartialDisk",                  glu_partialdisk                     },
-{ "gluPerspective",                  glu_perspective                     },
-{ "gluPickMatrix",                   glu_pickmatrix                      },
-{ "gluProject",                      glu_project                         },
-{ "gluPwlCurve",                     glu_pwlcurve                        },
-{ "gluQuadricDrawStyle",             glu_quadricdrawstyle                },
-{ "gluQuadricNormals",               glu_quadricnormals                  },
-{ "gluQuadricOrientation",           glu_quadricorientation              },
-{ "gluQuadricTexture",               glu_quadrictexture                  },
-{ "gluScaleImage",                   glu_scaleimage                      },
-{ "gluSphere",                       glu_sphere                          },
-{ "gluUnProject",                    glu_unproject                       },
-{ "gluUnProject4",                   glu_unproject4                      },
 { "glutSolidCone",                   glut_solidcone                      },
 { "glutSolidCube",                   glut_solidcube                      },
 { "glutSolidDodecahedron",           glut_soliddodecahedron              },

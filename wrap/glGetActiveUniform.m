@@ -20,7 +20,8 @@ size = int32(0);
 type = uint32(0);
 name = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetActiveUniform', program, index, bufSize, length, size, type, name );
+[ length, size, type, name ] = moglcore( 'glGetActiveUniform', program, index, bufSize, length, size, type, name );
 name = char(name);
 
 return
+% ---skip---

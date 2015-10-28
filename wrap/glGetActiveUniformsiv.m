@@ -17,6 +17,7 @@ end
 
 params = int32(zeros(1,uniformCount));
 
-moglcore( 'glGetActiveUniformsiv', program, uniformCount, uint32(uniformIndices), pname, params );
+params = moglcore( 'glGetActiveUniformsiv', program, uniformCount, uint32(uniformIndices), pname, params );
 
 return
+% ---skip---

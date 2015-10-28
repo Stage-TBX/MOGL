@@ -16,7 +16,8 @@ if nargin~=2,
 end
 
 params=int32(repmat(intmax, [ 16 1 ]));
-moglcore( 'glGetRenderbufferParameteriv', target, pname, params );
+params = moglcore( 'glGetRenderbufferParameteriv', target, pname, params );
 params = params(find(params~=intmax));
 
 return
+% ---skip---

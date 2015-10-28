@@ -19,7 +19,7 @@ end
 f=glGetTexParameterfv(target,pname);
 
 params = int32(zeros(size(f)));
-moglcore( 'glGetTexParameteriv', target, pname, params );
+params = moglcore( 'glGetTexParameteriv', target, pname, params );
 
 return
 % ---skip---

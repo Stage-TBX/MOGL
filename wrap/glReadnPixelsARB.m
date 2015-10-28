@@ -75,7 +75,7 @@ switch(type)
 end;
 
 % Execute actual call:
-moglcore( 'glReadnPixelsARB', x, y, width, height, format, type, bufSize, pixels );
+pixels = moglcore( 'glReadnPixelsARB', x, y, width, height, format, type, bufSize, pixels );
 
 % Rearrange data in Matlab friendly format:
 retpixels = zeros(size(pixels,2), size(pixels,3), size(pixels,1), pclass);
@@ -83,3 +83,4 @@ for i=1:numperpixel
     retpixels(:,:,i) = pixels(i,:,:);
 end
 return
+% ---skip---

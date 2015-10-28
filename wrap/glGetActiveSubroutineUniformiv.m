@@ -25,6 +25,7 @@ else
     values = int32(0);
 end
 
-moglcore( 'glGetActiveSubroutineUniformiv', program, shadertype, index, pname, values );
+values = moglcore( 'glGetActiveSubroutineUniformiv', program, shadertype, index, pname, values );
 
 return
+% ---skip---

@@ -22,7 +22,8 @@ severities = uint32(zeros(1,count));
 lengths = int32(zeros(1,count));
 messageLog = uint8(zeros(1,bufsize));
 
-r = moglcore( 'glGetDebugMessageLog', count, bufsize, sources, types, ids, severities, lengths, messageLog );
+[ r, sources, types, ids, severities, lengths, messageLog ] = moglcore( 'glGetDebugMessageLog', count, bufsize, sources, types, ids, severities, lengths, messageLog );
 messageLog = char(messageLog);
 
 return
+% ---skip---

@@ -2,7 +2,7 @@ function retpixels = glReadPixels( x, y, width, height, format, type, bufferoffs
 
 % glReadPixels  Interface to OpenGL function glReadPixels
 %
-% usage:  
+% usage:
 % For standard readback into a Matlab or Octave image matrix:
 % retpixels = glReadPixels( x, y, width, height, format, type )
 %
@@ -27,7 +27,7 @@ if nargout > 0
     if nargin~=6,
         error('Invalid number of arguments: Must be (x, y, width, height, format, type) for readback to host-memory.');
     end
-    
+
     bufferoffset = -1;
 else
     % PBO backed path: Readback into a Pixelbuffer object. Nothing is
@@ -37,11 +37,11 @@ else
     if nargin~=7,
         error('Invalid number of arguments: Must be (x, y, width, height, format, type, bufferoffset) for readback into PBO.');
     end
-    
+
     if isempty(bufferoffset)
         error('You must provide a valid "bufferoffset" into the PBO!');
     end
-    
+
     if bufferoffset < 0
         error('You must provide a valid, zero or positive integral "bufferoffset" into the PBO!');
     end
@@ -66,7 +66,7 @@ switch(format)
         numperpixel = 4;
     otherwise
         error('Invalid format passed to glReadPixels.');
-end;    
+end;
 
 if bufferoffset == -1
     % Readback to host memory, aka Matlab- or Octave- matrix:
@@ -93,7 +93,7 @@ if bufferoffset == -1
         otherwise
             error('Invalid type argument passed to glReadPixels()!');
     end;
-    
+
     % Allocate memory:
     retpixels = zeros(numperpixel, width, height, pclass);
     if type == GL.FLOAT
@@ -101,10 +101,10 @@ if bufferoffset == -1
     end
 
     % Execute actual call:
-    moglcore( 'glReadPixels', x, y, width, height, format, type, retpixels );
+    retpixels = moglcore( 'glReadPixels', x, y, width, height, format, type, retpixels );
 else
     % Readback into bound Pixelbuffer object PBO:
-    moglcore( 'glReadPixels', x, y, width, height, format, type, bufferoffset );
+    bufferoffset = moglcore( 'glReadPixels', x, y, width, height, format, type, bufferoffset );
     retpixels = [];
 end
 
@@ -114,24 +114,24 @@ return
 % ---autocode---
 %
 % function pixels = glReadPixels( x, y, width, height, format, type )
-% 
+%
 % % glReadPixels  Interface to OpenGL function glReadPixels
 % %
 % % usage:  pixels = glReadPixels( x, y, width, height, format, type )
 % %
 % % C function:  void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid* pixels)
-% 
+%
 % % 05-Mar-2006 -- created (generated automatically from header files)
-% 
+%
 % % ---allocate---
-% 
+%
 % if nargin~=6,
 %     error('invalid number of arguments');
 % end
-% 
+%
 % pixels = (0);
-% 
+%
 % moglcore( 'glReadPixels', x, y, width, height, format, type, pixels );
-% 
+%
 % return
 %

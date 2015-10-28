@@ -22,5 +22,5 @@ end
 % FIXME: Verify this assumption!
 params = double(repmat(NaN,[ 16 1 ]));
 
-moglcore( 'glGetUniformdv', program, location, params );
+params = moglcore( 'glGetUniformdv', program, location, params );
 params = params(find(~isnan(params))); %#ok<FNDSB>

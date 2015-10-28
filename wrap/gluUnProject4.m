@@ -19,7 +19,7 @@ objX = double(0);
 objY = double(0);
 objZ = double(0);
 objW = double(0);
-r = moglcore( 'gluUnProject4', winX, winY, winZ, clipW, double(model), double(proj), int32(view), near, far, objX, objY, objZ, objW );
+[ r, objX, objY, objZ, objW ] = moglcore( 'gluUnProject4', winX, winY, winZ, clipW, double(model), double(proj), int32(view), near, far, objX, objY, objZ, objW );
 
 return
 % ---skip---

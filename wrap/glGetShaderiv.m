@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetShaderiv', shader, pname, params );
+params = moglcore( 'glGetShaderiv', shader, pname, params );
 
 return
+% ---skip---

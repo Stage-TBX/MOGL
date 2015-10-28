@@ -2,7 +2,7 @@ function [ M, C ] = mcinfo( funcp )
 
 % MCINFO  From a parsed C declaration, extract information needed to
 %         write M-file wrapper and C interface function
-% 
+%
 % [ M, C ] = mcinfo( funcp )
 
 % 24-Jan-2005 -- created;  adapted from code in autocode.m (RFM)
@@ -43,7 +43,7 @@ if strcmp(funcp.argouttype.basetype,'void')==0,
     else
         C.hasptrreturn = 1;
 		% Old style: 32-bit pointer encoded in 32 bit uint32: C.arg_out{1}=sprintf('plhs[0]=mxCreateNumericMatrix(1,1,mxUINT32_CLASS,mxREAL);\n\t*(unsigned int *)mxGetData(plhs[0])=(unsigned int)');
-        
+
         % New style: 32 or 64 bit pointer encoded in double (which can hold
         % up to 64-bit if properly mangled):
         % TODO: We could also return a mxUINT64_CLASS type aka uint64(), which
@@ -83,7 +83,7 @@ for j=1:numel(funcp.argin.args),
             % Wrapper needs to cast to uint64()
             M.mogl_in{end+1} = sprintf('uint64(%s)', funcp.argin.args(j).argname);
         end
-        
+
     % GLsync handle scalar input argument?
 	elseif isempty(funcp.argin.args(j).type.stars) && strcmp(funcp.argin.args(j).type.basetype,'GLsync'),
         % New style: Memory pointers are encoded opaque inside double
@@ -95,7 +95,7 @@ for j=1:numel(funcp.argin.args),
 		M.arg_in{end+1}=funcp.argin.args(j).argname;
 		M.arg_in_check{end+1}=sprintf('if ~strcmp(class(%s),''double''),\n\terror([ ''argument ''''%s'''' must be a pointer coded as type double '' ]);\nend\n',funcp.argin.args(j).argname,funcp.argin.args(j).argname);
 		M.mogl_in{end+1}=funcp.argin.args(j).argname;
-        
+
 	% other scalar input argument?
     elseif isempty(funcp.argin.args(j).type.stars),
 		C.arg_in{end+1}=sprintf('(%s)mxGetScalar(prhs[%d])',funcp.argin.args(j).type.full,j-1);
@@ -165,6 +165,13 @@ for j=1:numel(funcp.argin.args),
 			M.allocate=1;
 			M.arg_out{end+1}=funcp.argin.args(j).argname;
 			M.arg_out_init{end+1}=sprintf('%s = %s(0);',funcp.argin.args(j).argname,mcast);
+
+			narg_out = numel(C.arg_out);
+			if isempty(C.arg_out{1})
+				narg_out = narg_out-1;
+			end
+      C.arg_out{end+1}=sprintf('plhs[%d]=mxCreateSharedDataCopy(prhs[%d])',narg_out,j-1);
+      M.mogl_out{end+1}=funcp.argin.args(j).argname;
 		else
 			thisallocate=0;
 			M.arg_in{end+1}=funcp.argin.args(j).argname;

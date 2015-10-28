@@ -18,7 +18,7 @@ end
 
 params = int32(zeros(2,1));
 
-moglcore( 'glGetTexLevelParameteriv', target, level, pname, params );
+params = moglcore( 'glGetTexLevelParameteriv', target, level, pname, params );
 params = params(1,1);
 
 return

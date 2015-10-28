@@ -18,7 +18,8 @@ end
 length = int32(0);
 source = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetShaderSource', shader, bufSize, length, source );
+[ length, source ] = moglcore( 'glGetShaderSource', shader, bufSize, length, source );
 source = char(source);
 
 return
+% ---skip---

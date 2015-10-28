@@ -18,6 +18,6 @@ end
 
 params = single(0);
 
-moglcore( 'glGetTexLevelParameterfv', target, level, pname, params );
+params = moglcore( 'glGetTexLevelParameterfv', target, level, pname, params );
 
 return

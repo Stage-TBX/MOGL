@@ -6,7 +6,7 @@ function glMultiTexCoord1i( target, s )
 %
 % C function:  void glMultiTexCoord1i(GLenum target, GLint s)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=2,
     error('invalid number of arguments');

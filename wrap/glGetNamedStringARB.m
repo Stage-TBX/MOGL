@@ -18,7 +18,8 @@ end
 stringlen = int32(0);
 string = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetNamedStringARB', namelen, uint8(name), bufSize, stringlen, string );
+[ stringlen, string ] = moglcore( 'glGetNamedStringARB', namelen, uint8(name), bufSize, stringlen, string );
 string = char(string);
 
 return
+% ---skip---

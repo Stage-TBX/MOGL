@@ -16,6 +16,7 @@ if nargin~=2,
 end
 
 params = int32(repmat(intmax('int32'),[ 32 1 ]));
-moglcore( 'glGetVertexAttribiv', index, pname, params );
+params = oglcore( 'glGetVertexAttribiv', index, pname, params );
 params = params(find(params ~= intmax('int32'))); %#ok<FNDSB>
 return
+% ---skip---

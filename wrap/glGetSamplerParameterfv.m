@@ -16,8 +16,9 @@ if nargin~=2,
 end
 
 params = single(repmat(NaN,[ 16 1 ]));
-moglcore( 'glGetSamplerParameterfv', sampler, pname, params );
+params = moglcore( 'glGetSamplerParameterfv', sampler, pname, params );
 params = double(params);
 params = params(find(~isnan(params))); %#ok<FNDSB>
 
 return
+% ---skip---

@@ -6,7 +6,7 @@ function pattern = glGetnPolygonStippleARB( bufSize )
 %
 % C function:  void glGetnPolygonStippleARB(GLsizei bufSize, GLubyte* pattern)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 % ---allocate---
 
@@ -16,6 +16,6 @@ end
 
 pattern = uint8(0);
 
-moglcore( 'glGetnPolygonStippleARB', bufSize, pattern );
+pattern = moglcore( 'glGetnPolygonStippleARB', bufSize, pattern );
 
 return

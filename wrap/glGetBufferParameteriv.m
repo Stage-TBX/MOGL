@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetBufferParameteriv', target, pname, params );
+params = moglcore( 'glGetBufferParameteriv', target, pname, params );
 
 return
+% ---skip---

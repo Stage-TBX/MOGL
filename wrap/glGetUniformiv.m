@@ -18,7 +18,7 @@ end
 % Allocate enough bufferspace for the biggest returned vector:
 params=int32(repmat(intmax, [ 16 1 ]));
 
-moglcore( 'glGetUniformiv', program, location, params );
+params = moglcore( 'glGetUniformiv', program, location, params );
 params = params(find(params~=intmax));
 
 return

@@ -6,7 +6,7 @@ function glTexImage2DMultisample( target, samples, internalformat, width, height
 %
 % C function:  void glTexImage2DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=6,
     error('invalid number of arguments');

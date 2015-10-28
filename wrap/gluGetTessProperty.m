@@ -21,6 +21,6 @@ if ~strcmp(class(tess),'double'),
 end
 
 data = double(0);
-moglcore( 'gluGetTessProperty', tess, which, data );
+data = moglcore( 'gluGetTessProperty', tess, which, data );
 
 return

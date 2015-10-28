@@ -6,7 +6,7 @@ function r = glIsTransformFeedback( id )
 %
 % C function:  GLboolean glIsTransformFeedback(GLuint id)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=1,
     error('invalid number of arguments');

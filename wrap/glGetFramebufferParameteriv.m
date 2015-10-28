@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetFramebufferParameteriv', target, pname, params );
+params = moglcore( 'glGetFramebufferParameteriv', target, pname, params );
 
 return
+% ---skip---

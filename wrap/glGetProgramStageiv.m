@@ -17,6 +17,7 @@ end
 
 values = int32(0);
 
-moglcore( 'glGetProgramStageiv', program, shadertype, pname, values );
+values = moglcore( 'glGetProgramStageiv', program, shadertype, pname, values );
 
 return
+% ---skip---

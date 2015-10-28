@@ -17,6 +17,7 @@ end
 
 ids = uint32(zeros(1,n));
 
-moglcore( 'glGenQueries', n, ids );
+ids = moglcore( 'glGenQueries', n, ids );
 
 return
+% ---skip---

@@ -19,6 +19,6 @@ if ~isa(nurb,'double')
 	error('argument ''nurb'' must be a pointer coded as type double');
 end
 
-moglcore( 'gluPwlCurve', nurb, count, single(data), stride, type );
+data = moglcore( 'gluPwlCurve', nurb, count, single(data), stride, type );
 
 return

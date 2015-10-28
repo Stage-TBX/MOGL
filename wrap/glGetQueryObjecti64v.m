@@ -17,6 +17,7 @@ end
 
 params = int64(0);
 
-moglcore( 'glGetQueryObjecti64v', id, pname, params );
+params = moglcore( 'glGetQueryObjecti64v', id, pname, params );
 
 return
+% ---skip---

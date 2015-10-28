@@ -6,7 +6,7 @@ function glDeleteRenderbuffersEXT( n, renderbuffers )
 %
 % C function:  void glDeleteRenderbuffersEXT(GLsizei n, const GLuint* renderbuffers)
 
-% 26-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=2,
     error('invalid number of arguments');

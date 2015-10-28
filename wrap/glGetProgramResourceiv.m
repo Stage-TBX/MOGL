@@ -18,6 +18,7 @@ end
 length = int32(0);
 params = int32(zeros(1, bufSize));
 
-moglcore( 'glGetProgramResourceiv', program, programInterface, index, propCount, uint32(props), bufSize, length, params );
+[ length, params ] = moglcore( 'glGetProgramResourceiv', program, programInterface, index, propCount, uint32(props), bufSize, length, params );
 
 return
+% ---skip---

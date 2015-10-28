@@ -17,7 +17,7 @@ if nargin~=2,
 end
 
 params = single(NaN(4,1));
-moglcore( 'glGetTexGenfv', coord, pname, params );
+params = moglcore( 'glGetTexGenfv', coord, pname, params );
 params = double(params);
 params = params(find(~isnan(params))); %#ok<FNDSB>
 

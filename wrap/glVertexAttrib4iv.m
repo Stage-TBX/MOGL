@@ -6,7 +6,7 @@ function glVertexAttrib4iv( index, v )
 %
 % C function:  void glVertexAttrib4iv(GLuint index, const GLint* v)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=2,
     error('invalid number of arguments');

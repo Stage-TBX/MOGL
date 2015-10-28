@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetNamedStringivARB', namelen, uint8(name), pname, params );
+params = moglcore( 'glGetNamedStringivARB', namelen, uint8(name), pname, params );
 
 return
+% ---skip---

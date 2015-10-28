@@ -6,7 +6,7 @@ function glTextureStorage3DEXT( texture, target, levels, internalformat, width, 
 %
 % C function:  void glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=7,
     error('invalid number of arguments');

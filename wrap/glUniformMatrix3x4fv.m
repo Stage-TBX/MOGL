@@ -6,7 +6,7 @@ function glUniformMatrix3x4fv( location, count, transpose, value )
 %
 % C function:  void glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

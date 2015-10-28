@@ -16,7 +16,7 @@ if nargin~=2,
 end
 
 params = double(NaN(4,1));
-moglcore( 'glGetTexGendv', coord, pname, params );
+params = moglcore( 'glGetTexGendv', coord, pname, params );
 params = params(find(~isnan(params)));
 
 return

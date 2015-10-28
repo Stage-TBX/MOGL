@@ -22,6 +22,7 @@ end
 length = int32(0);
 values = int32(zeros(1, bufSize));
 
-moglcore( 'glGetSynciv', sync, pname, bufSize, length, values );
+[ length, values ] = moglcore( 'glGetSynciv', sync, pname, bufSize, length, values );
 
 return
+% ---skip---

@@ -6,7 +6,7 @@ function r = glMapBufferRange( target, ptr, ptr, access )
 %
 % C function:  GLvoid* glMapBufferRange(GLenum target, GLint ptr, GLsizei ptr, GLbitfield access)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

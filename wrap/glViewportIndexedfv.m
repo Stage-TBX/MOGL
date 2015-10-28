@@ -6,7 +6,7 @@ function glViewportIndexedfv( index, v )
 %
 % C function:  void glViewportIndexedfv(GLuint index, const GLfloat* v)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=2,
     error('invalid number of arguments');

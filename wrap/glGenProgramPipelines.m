@@ -17,6 +17,7 @@ end
 
 pipelines = uint32(zeros(1,n));
 
-moglcore( 'glGenProgramPipelines', n, pipelines );
+pipelines = moglcore( 'glGenProgramPipelines', n, pipelines );
 
 return
+% ---skip---

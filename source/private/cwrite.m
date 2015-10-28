@@ -17,6 +17,9 @@ else
     % Return value (if any) is a scalar or something else innocent:
     fprintf(fid,'%s%s(%s);\n',C.arg_out{1},funcp.fname,strrep(commalist(C.arg_in{:}),', ',sprintf(',\n\t\t')));
 end
+for i = 2:numel(C.arg_out)
+    fprintf(fid,'\t%s;\n',C.arg_out{i});
+end
 fprintf(fid,'\n}\n\n');
 
 return

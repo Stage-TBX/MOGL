@@ -19,3 +19,4 @@ end
 img = glGetTexImage( target, level, format, type, bufSize );
 
 return
+% ---skip---

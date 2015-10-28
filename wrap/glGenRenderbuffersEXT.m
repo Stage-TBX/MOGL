@@ -17,7 +17,7 @@ end
 
 renderbuffers = uint32(zeros(1,n));
 
-moglcore( 'glGenRenderbuffersEXT', n, renderbuffers );
+renderbuffers = moglcore( 'glGenRenderbuffersEXT', n, renderbuffers );
 
 return
 % ---skip---

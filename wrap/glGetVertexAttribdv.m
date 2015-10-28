@@ -16,7 +16,8 @@ if nargin~=2,
 end
 
 params = double(repmat(NaN,[ 32 1 ]));
-moglcore( 'glGetVertexAttribdv', index, pname, params );
+params = moglcore( 'glGetVertexAttribdv', index, pname, params );
 params = params(find(~isnan(params))); %#ok<FNDSB>
 
 return
+% ---skip---

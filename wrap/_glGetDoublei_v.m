@@ -6,10 +6,9 @@ function data = glGetDoublei_v( target, index )
 %
 % C function:  void glGetDoublei_v(GLenum target, GLuint index, GLdouble* data)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 % ---allocate---
-% ---protected---
 
 if nargin~=2,
     error('invalid number of arguments');
@@ -17,6 +16,6 @@ end
 
 data = double(0);
 
-moglcore( 'glGetDoublei_v', target, index, data );
+data = moglcore( 'glGetDoublei_v', target, index, data );
 
 return

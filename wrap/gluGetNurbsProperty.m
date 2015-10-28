@@ -22,6 +22,6 @@ end
 
 data = single(0);
 
-moglcore( 'gluGetNurbsProperty', nurb, property, data );
+data = moglcore( 'gluGetNurbsProperty', nurb, property, data );
 
 return

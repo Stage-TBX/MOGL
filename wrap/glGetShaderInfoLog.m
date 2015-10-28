@@ -18,7 +18,8 @@ end
 length = int32(0);
 infoLog = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetShaderInfoLog', shader, bufSize, length, infoLog );
+[ length, infoLog ] = moglcore( 'glGetShaderInfoLog', shader, bufSize, length, infoLog );
 infoLog = char(infoLog);
 
 return
+% ---skip---

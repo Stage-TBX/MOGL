@@ -6,7 +6,7 @@ function glClearBufferData( target, internalformat, format, type, data )
 %
 % C function:  void glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const void* data)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=5,
     error('invalid number of arguments');

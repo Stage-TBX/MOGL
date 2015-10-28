@@ -6,7 +6,7 @@ function glRectiv( v1, v2 )
 %
 % C function:  void glRectiv(const GLint* v1, const GLint* v2)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=2,
     error('invalid number of arguments');

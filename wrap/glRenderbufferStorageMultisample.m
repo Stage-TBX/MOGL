@@ -6,7 +6,7 @@ function glRenderbufferStorageMultisample( target, samples, internalformat, widt
 %
 % C function:  void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=5,
     error('invalid number of arguments');

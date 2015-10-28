@@ -6,7 +6,7 @@ function glConvolutionParameteriv( target, pname, params )
 %
 % C function:  void glConvolutionParameteriv(GLenum target, GLenum pname, const GLint* params)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=3,
     error('invalid number of arguments');

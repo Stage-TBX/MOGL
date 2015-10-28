@@ -18,6 +18,7 @@ end
 count = int32(0);
 shaders = uint32(zeros(1,maxCount));
 
-moglcore( 'glGetAttachedShaders', program, maxCount, count, shaders );
+[ count, shaders ] = moglcore( 'glGetAttachedShaders', program, maxCount, count, shaders );
 
 return
+% ---skip---

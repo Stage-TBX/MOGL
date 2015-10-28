@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetProgramiv', program, pname, params );
+params = moglcore( 'glGetProgramiv', program, pname, params );
 
 return
+% ---skip---

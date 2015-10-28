@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetQueryIndexediv', target, index, pname, params );
+params = moglcore( 'glGetQueryIndexediv', target, index, pname, params );
 
 return
+% ---skip---

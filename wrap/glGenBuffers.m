@@ -17,7 +17,7 @@ end
 
 buffers = uint32(zeros(1,n));
 
-moglcore( 'glGenBuffers', n, buffers );
+buffers = moglcore( 'glGenBuffers', n, buffers );
 
 return
 % ---skip---

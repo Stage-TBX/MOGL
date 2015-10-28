@@ -6,7 +6,7 @@ function glDeleteSync( sync )
 %
 % C function:  void glDeleteSync(GLsync sync)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=1,
     error('invalid number of arguments');

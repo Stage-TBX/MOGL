@@ -6,7 +6,7 @@ function glTranslated( x, y, z )
 %
 % C function:  void glTranslated(GLdouble x, GLdouble y, GLdouble z)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=3,
     error('invalid number of arguments');

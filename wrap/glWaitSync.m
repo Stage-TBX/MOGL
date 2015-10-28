@@ -6,7 +6,7 @@ function glWaitSync( sync, flags, timeout )
 %
 % C function:  void glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=3,
     error('invalid number of arguments');

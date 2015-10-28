@@ -17,6 +17,7 @@ end
 
 framebuffers = uint32(zeros(1,n));
 
-moglcore( 'glGenFramebuffers', n, framebuffers );
+framebuffers = moglcore( 'glGenFramebuffers', n, framebuffers );
 
 return
+% ---skip---

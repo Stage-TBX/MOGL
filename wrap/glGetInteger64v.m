@@ -18,7 +18,8 @@ end
 % Allocate enough bufferspace for the biggest returned vector:
 params=int64(repmat(intmax('int64'), [ 16 1 ]));
 
-moglcore( 'glGetInteger64v', pname, params );
+params = moglcore( 'glGetInteger64v', pname, params );
 params = params(find(params~=intmax('int64')));
 
 return
+% ---skip---

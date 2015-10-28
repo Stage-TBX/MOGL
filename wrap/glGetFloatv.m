@@ -1,7 +1,7 @@
 function params = glGetFloatv( pname )
 
 % glGetFloatv  Interface to glGetFloatv
-% 
+%
 % usage:  params = glGetFloatv( pname )
 %
 % C function:  void glGetFloatv(GLenum pname, GLfloat* params)
@@ -17,7 +17,7 @@ if nargin~=1,
 end
 
 params = single(repmat(NaN,[ 32 1 ]));
-moglcore( 'glGetFloatv', pname, params );
+params = moglcore( 'glGetFloatv', pname, params );
 params = double(params);
 params = params(find(~isnan(params))); %#ok<FNDSB>
 

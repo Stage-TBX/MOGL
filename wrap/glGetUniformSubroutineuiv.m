@@ -18,7 +18,8 @@ end
 % Allocate enough bufferspace for the biggest returned vector:
 params=uint32(repmat(intmax('uint32'), [ 16 1 ]));
 
-moglcore( 'glGetUniformSubroutineuiv', shadertype, location, params );
+params = moglcore( 'glGetUniformSubroutineuiv', shadertype, location, params );
 params = params(find(params~=intmax('uint32')));
 
 return
+% ---skip---

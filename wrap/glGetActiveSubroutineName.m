@@ -18,7 +18,8 @@ end
 length = int32(0);
 name = uint8(zeros(1,bufsize));
 
-moglcore( 'glGetActiveSubroutineName', program, shadertype, index, bufsize, length, name );
+[ length, name ] = moglcore( 'glGetActiveSubroutineName', program, shadertype, index, bufsize, length, name );
 name = char(name);
 
 return
+% ---skip---

@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetFramebufferAttachmentParameteriv', target, attachment, pname, params );
+params = moglcore( 'glGetFramebufferAttachmentParameteriv', target, attachment, pname, params );
 
 return
+% ---skip---

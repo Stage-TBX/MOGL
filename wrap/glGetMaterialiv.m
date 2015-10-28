@@ -19,7 +19,7 @@ end
 f=glGetMaterialfv(face,pname);
 
 params = int32(zeros(size(f)));
-moglcore( 'glGetMaterialiv', face, pname, params );
+params = moglcore( 'glGetMaterialiv', face, pname, params );
 
 return
 % ---skip---

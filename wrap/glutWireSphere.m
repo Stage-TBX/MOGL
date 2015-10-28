@@ -6,7 +6,7 @@ function glutWireSphere( radius, slices, stacks )
 %
 % C function:  void glutWireSphere(GLdouble radius, GLint slices, GLint stacks)
 
-% 26-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=3,
     error('invalid number of arguments');

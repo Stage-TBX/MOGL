@@ -1,7 +1,7 @@
 function params = glGetVertexAttribPointerv( index, pname )
 
 % glGetVertexAttribPointerv  Interface to glGetVertexAttribPointerv
-% 
+%
 % usage:  params = glGetVertexAttribPointerv( index, pname )
 %
 % C function:  void glGetVertexAttribPointerv (GLuint index, GLenum pname, GLvoid** pointer)
@@ -17,6 +17,6 @@ if nargin~=2,
 end
 
 params=uint64(0);
-moglcore( 'glGetVertexAttribPointerv', index, pname, params );
+params = moglcore( 'glGetVertexAttribPointerv', index, pname, params );
 
 return

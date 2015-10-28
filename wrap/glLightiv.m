@@ -6,7 +6,7 @@ function glLightiv( light, pname, params )
 %
 % C function:  void glLightiv(GLenum light, GLenum pname, const GLint* params)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=3,
     error('invalid number of arguments');

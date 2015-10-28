@@ -18,3 +18,4 @@ end
 moglcore( 'glGetMapiv', target, query, v );
 
 return
+% ---skip---

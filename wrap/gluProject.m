@@ -18,7 +18,7 @@ end
 winX = double(0);
 winY = double(0);
 winZ = double(0);
-r = moglcore( 'gluProject', objX, objY, objZ, double(model), double(proj), int32(view), winX, winY, winZ );
+[r, winX, winY, winZ] = moglcore( 'gluProject', objX, objY, objZ, double(model), double(proj), int32(view), winX, winY, winZ );
 
 return
 % ---skip---

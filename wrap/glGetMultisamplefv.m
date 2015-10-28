@@ -17,6 +17,7 @@ end
 
 val = single([0,0]);
 
-moglcore( 'glGetMultisamplefv', pname, index, val );
+val = moglcore( 'glGetMultisamplefv', pname, index, val );
 
 return
+% ---skip---

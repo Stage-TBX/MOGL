@@ -26,7 +26,7 @@ n=(width+padn)*height+8;
 pixels=uint8(zeros(n,1));
 
 % call glReadPixels
-moglcore( 'glReadPixels', rect(1), rect(2), width, height, ...
+pixels = moglcore( 'glReadPixels', rect(1), rect(2), width, height, ...
     format, type, pixels );
 
 % encode format, type, width, and height at end of matrix

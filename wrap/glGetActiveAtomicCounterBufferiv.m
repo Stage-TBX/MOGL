@@ -26,6 +26,7 @@ else
     params = int32(0);
 end
 
-moglcore( 'glGetActiveAtomicCounterBufferiv', program, bufferIndex, pname, params );
+params = moglcore( 'glGetActiveAtomicCounterBufferiv', program, bufferIndex, pname, params );
 
 return
+% ---skip---

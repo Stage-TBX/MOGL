@@ -1,7 +1,7 @@
 function params = glGetPointerv( pname )
 
 % glGetPointerv  Interface to glGetPointerv
-% 
+%
 % usage:  params = glGetPointerv( pname )
 %
 % C function:  void glGetPointerv (GLenum pname, GLvoid* *params);
@@ -17,6 +17,6 @@ if nargin~=1,
 end
 
 params=uint64(0);
-moglcore( 'glGetPointerv', pname, params );
+params = moglcore( 'glGetPointerv', pname, params );
 
 return

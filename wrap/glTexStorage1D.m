@@ -6,7 +6,7 @@ function glTexStorage1D( target, levels, internalformat, width )
 %
 % C function:  void glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

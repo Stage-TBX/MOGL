@@ -18,7 +18,8 @@ end
 length = int32(0);
 label = uint8(zeros(1, bufSize));
 
-moglcore( 'glGetObjectPtrLabel', ptr, bufSize, length, label );
+[ length, label ] = moglcore( 'glGetObjectPtrLabel', ptr, bufSize, length, label );
 label = char(label);
 
 return
+% ---skip---

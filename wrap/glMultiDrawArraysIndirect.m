@@ -6,7 +6,7 @@ function glMultiDrawArraysIndirect( mode, indirect, drawcount, stride )
 %
 % C function:  void glMultiDrawArraysIndirect(GLenum mode, const void* indirect, GLsizei drawcount, GLsizei stride)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

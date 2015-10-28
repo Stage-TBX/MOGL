@@ -1,7 +1,7 @@
 function params = glGetBufferPointerv( target, pname )
 
 % glGetBufferPointerv  Interface to glGetBufferPointerv
-% 
+%
 % usage:  params = glGetBufferPointerv( target, pname )
 %
 % C function:  void glGetBufferPointerv(GLenum target, GLenum pname, GLvoid** params)
@@ -17,6 +17,6 @@ if nargin~=2,
 end
 
 params=uint64(0);
-moglcore( 'glGetBufferPointerv', target, pname, params );
+params = moglcore( 'glGetBufferPointerv', target, pname, params );
 
 return

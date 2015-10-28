@@ -19,6 +19,7 @@ length = int32(0);
 binaryFormat = uint32(0);
 binary = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetProgramBinary', program, bufSize, length, binaryFormat, binary );
+[ length, binaryFormat, binary ] = moglcore( 'glGetProgramBinary', program, bufSize, length, binaryFormat, binary );
 
 return
+% ---skip---

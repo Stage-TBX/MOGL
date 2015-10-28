@@ -6,7 +6,7 @@ function glDrawRangeElementsBaseVertex( mode, start, end, count, type, indices, 
 %
 % C function:  void glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid* indices, GLint basevertex)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=7,
     error('invalid number of arguments');

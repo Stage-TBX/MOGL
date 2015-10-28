@@ -6,7 +6,7 @@ function glTextureView( texture, target, origtexture, internalformat, minlevel, 
 %
 % C function:  void glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=8,
     error('invalid number of arguments');

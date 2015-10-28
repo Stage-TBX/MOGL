@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetProgramInterfaceiv', program, programInterface, pname, params );
+params = moglcore( 'glGetProgramInterfaceiv', program, programInterface, pname, params );
 
 return
+% ---skip---

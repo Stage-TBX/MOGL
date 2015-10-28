@@ -16,7 +16,7 @@ if nargin~=1,
 end
 
 equation = double(zeros(4,1));
-moglcore( 'glGetClipPlane', plane, equation );
+equation = moglcore( 'glGetClipPlane', plane, equation );
 
 return
 % ---skip---

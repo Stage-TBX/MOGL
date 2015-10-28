@@ -18,6 +18,7 @@ end
 % Query size of compressed image and alloc properly sized output buffer:
 img = uint8(zeros(1, bufSize));
 
-moglcore( 'glGetnCompressedTexImageARB', target, lod, bufSize, img );
+img = moglcore( 'glGetnCompressedTexImageARB', target, lod, bufSize, img );
 
 return
+% ---skip---

@@ -16,7 +16,7 @@ if nargin~=0,
 end
 
 mask = uint8(zeros(128,1));
-moglcore( 'glGetPolygonStipple', mask );
+mask = moglcore( 'glGetPolygonStipple', mask );
 
 return
 % ---skip---

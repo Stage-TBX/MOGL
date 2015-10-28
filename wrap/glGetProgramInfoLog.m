@@ -18,7 +18,8 @@ end
 length = int32(0);
 infoLog = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetProgramInfoLog', program, bufSize, length, infoLog );
+[ length, infoLog ] = moglcore( 'glGetProgramInfoLog', program, bufSize, length, infoLog );
 infoLog = char(infoLog);
 
 return
+% ---skip---

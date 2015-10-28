@@ -18,7 +18,8 @@ end
 length = int32(0);
 uniformBlockName = uint8(zeros(1,bufSize));
 
-moglcore( 'glGetActiveUniformBlockName', program, uniformBlockIndex, bufSize, length, uniformBlockName );
+[ length, uniformBlockName ] = moglcore( 'glGetActiveUniformBlockName', program, uniformBlockIndex, bufSize, length, uniformBlockName );
 uniformBlockName = char(uniformBlockName);
 
 return
+% ---skip---

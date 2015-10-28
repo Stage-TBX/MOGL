@@ -17,6 +17,7 @@ end
 
 samplers = uint32(zeros(1,count));
 
-moglcore( 'glGenSamplers', count, samplers );
+samplers = moglcore( 'glGenSamplers', count, samplers );
 
 return
+% ---skip---

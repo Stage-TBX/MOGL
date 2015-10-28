@@ -17,6 +17,7 @@ end
 
 params = int32(0);
 
-moglcore( 'glGetQueryObjectiv', id, pname, params );
+params = moglcore( 'glGetQueryObjectiv', id, pname, params );
 
 return
+% ---skip---

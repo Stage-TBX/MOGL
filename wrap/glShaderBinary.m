@@ -6,7 +6,7 @@ function glShaderBinary( count, shaders, binaryformat, binary, length )
 %
 % C function:  void glShaderBinary(GLsizei count, const GLuint* shaders, GLenum binaryformat, const GLvoid* binary, GLsizei length)
 
-% 30-Aug-2012 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=5,
     error('invalid number of arguments');

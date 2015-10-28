@@ -6,7 +6,7 @@ function glUniformMatrix2fv( location, count, transpose, value )
 %
 % C function:  void glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat* value)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

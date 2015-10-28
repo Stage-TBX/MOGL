@@ -17,3 +17,4 @@ end
 moglcore( 'glGetnMapivARB', target, query, bufSize, v );
 
 return
+% ---skip---

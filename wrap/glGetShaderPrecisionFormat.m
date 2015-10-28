@@ -18,6 +18,7 @@ end
 range = int32(zeros(1,2));
 precision = int32(0);
 
-moglcore( 'glGetShaderPrecisionFormat', shadertype, precisiontype, range, precision );
+[ range, precision ] = moglcore( 'glGetShaderPrecisionFormat', shadertype, precisiontype, range, precision );
 
 return
+% ---skip---

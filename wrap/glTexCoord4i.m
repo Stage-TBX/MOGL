@@ -6,7 +6,7 @@ function glTexCoord4i( s, t, r, q )
 %
 % C function:  void glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 
-% 25-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=4,
     error('invalid number of arguments');

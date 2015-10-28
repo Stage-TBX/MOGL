@@ -1,17 +1,17 @@
-function glSamplePatternSGIS( arg1 )
+function glSamplePatternSGIS( pattern )
 
 % glSamplePatternSGIS  Interface to OpenGL function glSamplePatternSGIS
 %
-% usage:  glSamplePatternSGIS( arg1 )
+% usage:  glSamplePatternSGIS( pattern )
 %
-% C function:  void glSamplePatternSGIS(GLenum)
+% C function:  void glSamplePatternSGIS(GLenum pattern)
 
-% 26-Mar-2011 -- created (generated automatically from header files)
+% 28-Oct-2015 -- created (generated automatically from header files)
 
 if nargin~=1,
     error('invalid number of arguments');
 end
 
-moglcore( 'glSamplePatternSGIS', arg1 );
+moglcore( 'glSamplePatternSGIS', pattern );
 
 return

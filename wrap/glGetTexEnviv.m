@@ -19,7 +19,7 @@ end
 f=glGetTexEnvfv(target,pname);
 
 params = int32(zeros(size(f)));
-moglcore( 'glGetTexEnviv', target, pname, params );
+params = moglcore( 'glGetTexEnviv', target, pname, params );
 
 return
 % ---skip---

@@ -29,8 +29,8 @@ switch(format)
         numperpixel = 4;
     otherwise
         error('Invalid format passed to glGetTexImage.');
-end;    
-        
+end;
+
 switch(type)
     case {GL.UNSIGNED_BYTE , GL.BYTE }
         numsize = 1;
@@ -76,10 +76,10 @@ end;
 
 if exist('bufSize', 'var')
     % This is actually a call to glGetnTexImageARB:
-    moglcore( 'glGetnTexImageARB', target, level, format, type, bufSize, pixels );
+    pixels = moglcore( 'glGetnTexImageARB', target, level, format, type, bufSize, pixels );
 else
     % Execute actual call to moglcore:
-    moglcore( 'glGetTexImage', target, level, format, type, pixels );
+    pixels = moglcore( 'glGetTexImage', target, level, format, type, pixels );
 end
 
 return

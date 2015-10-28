@@ -17,6 +17,7 @@ end
 
 params = single(0);
 
-moglcore( 'glGetMinmaxParameterfv', target, pname, params );
+params = moglcore( 'glGetMinmaxParameterfv', target, pname, params );
 
 return
+% ---skip---

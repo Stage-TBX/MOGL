@@ -17,6 +17,7 @@ end
 
 arrays = uint32(zeros(1,n));
 
-moglcore( 'glGenVertexArrays', n, arrays );
+arrays = moglcore( 'glGenVertexArrays', n, arrays );
 
 return
+% ---skip---

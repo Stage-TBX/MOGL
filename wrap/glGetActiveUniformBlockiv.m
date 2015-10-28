@@ -25,6 +25,7 @@ else
     params = int32(0);
 end
 
-moglcore( 'glGetActiveUniformBlockiv', program, uniformBlockIndex, pname, params );
+params = moglcore( 'glGetActiveUniformBlockiv', program, uniformBlockIndex, pname, params );
 
 return
+% ---skip---

@@ -20,6 +20,8 @@
 #include <stdio.h>
 #include <limits.h>
 
+extern mxArray *mxCreateSharedDataCopy(const mxArray *pr);
+
 #define printf mexPrintf
 #ifndef true
 #define true 1
@@ -44,7 +46,7 @@
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
-#ifdef MATLAB_MEX_FILE 
+#ifdef MATLAB_MEX_FILE
 #include <AGL/agl.h>
 #endif
 #define CALLCONV
@@ -130,7 +132,7 @@ typedef struct mogl_tess_struct {
     char            nGLU_TESS_COMBINE[MAX_TESSCBNAME];
     char            nGLU_TESS_COMBINE_DATA[MAX_TESSCBNAME];
     char            nGLU_TESS_ERROR[MAX_TESSCBNAME];
-    char            nGLU_TESS_ERROR_DATA[MAX_TESSCBNAME];    
+    char            nGLU_TESS_ERROR_DATA[MAX_TESSCBNAME];
 } mogl_tess_struct;
 
 // Our own little buffer memory manager: This code is adapted from

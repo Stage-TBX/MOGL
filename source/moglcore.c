@@ -44,7 +44,7 @@ static int firsttime = 1;
 static int debuglevel = 1;
 
 // Dummymode: If set to a value greater than zero, moglcore does not really execute
-// commands anymore. 
+// commands anymore.
 static int dummymode = 0;
 
 // This flag is > 0 if we are in a section started by glBegin() in that case we are
@@ -86,11 +86,11 @@ void mexExitFunction(void)
   // Release all memory in bufferlist 1 - The one that usually
   // persists over calls to moglcore.
   PsychFreeAllTempMemory(1);
-  
+
   // Release all memory for persistent GLU tesselator memory list:
   PsychFreeAllTempMemory(2);
   PsychFreeAllTempMemory(3);
-  
+
   firsttime = 1;
 }
 
@@ -103,7 +103,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     // Start of dispatcher:
     int i;
     GLenum err;
-    
+
     // FreeGlut must be initialized, otherwise it will emergency abort the whole application.
     // These variables are needed for it:
     int noargs = 1;
@@ -112,7 +112,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
     // see whether there's a string command
     if(nrhs<1 || !mxIsChar(prhs[0])) mogl_usageerr();
-    
+
     // get string command
     mxGetString(prhs[0],cmd,CMDLEN);
 
@@ -128,7 +128,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         glBeginLevel=0;
         goto moglreturn;
     }
-    
+
     if (strcmp(cmd, "DUMMYMODE")==0) {
         if (nrhs<2 || mxGetScalar(prhs[1])<0) {
             mexErrMsgTxt("MOGL-ERROR: No dummy mode level or invalid level (<0) given for subcommand DUMMYMODE!");
@@ -152,7 +152,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         debuglevel = (int) mxGetScalar(prhs[1]);
         goto moglreturn;
     }
-    
+
     // Special cleanup subcommand needed for GNU/Octave: See explanation below in firstTime init.
     if (strcmp(cmd, "JettisonModuleHelper")==0) {
       goto moglreturn;
@@ -169,12 +169,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     // GLM module is included and supported in moglcore: This is necessary if
     // one wants to use MOGL independent from Psychtoolbox. GLM is only supported
     // on MacOS-X, not on Linux or Windows...
-    
+
     // We execute glm-commands without performing GLEW first-time initialization,
     // because to execute glewinit() we need a valid OpenGL context. This context is
     // either created by Psychtoolbox or by glm. Therefore glm-commands must be able
     // to execute before glewinit() happened.
-    
+
     // look for command in glm command map
     if( (i=binsearch(glm_map,glm_map_count,cmd))>=0 ) {
         glm_map[i].cmdfn(nlhs,plhs,nrhs-1,prhs+1);
@@ -182,7 +182,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     }
 
     #endif
-    
+
     // Is this the first invocation of moglcore?
     if (firsttime) {
         // Yes. Initialize GLEW, the GL Extension Wrangler Library. This will
@@ -227,10 +227,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 			printf("See file 'License.txt' in the Psychtoolbox root folder for the exact licensing conditions.\n");
 		}
         fflush(NULL);
-        
+
         // Perform dynamic rebinding of ARB extensions to core functions, if necessary:
         mogl_rebindARBExtensionsToCore();
-        
+
 		#ifdef FREEGLUT
 		// FreeGlut must be initialized, otherwise it will emergency abort the whole application.
 		// However, we skip init if we're on a setup without GLX display backend, as this would
@@ -253,11 +253,11 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
 		// Register exit-handler: When flushing the mex-file, we free all allocated buffer memory:
 		mexAtExit(&mexExitFunction);
-		
+
         // Done with first time initialization:
         firsttime = 0;
-    }   
-	
+    }
+
     // If glBeginLevel >  1 then most probably the script was aborted after execution of glBegin() but
     // before execution of glEnd(). In that case, we reset the level to zero.
     if (glBeginLevel > 1) glBeginLevel = 0;
@@ -265,24 +265,24 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     // Reset OpenGL error state so we can be sure that any of our error queries really
     // relate to errors caused by us:
     if (glBeginLevel == 0 && debuglevel > 0 && (strstr(cmd, "glGetError")==NULL)) glGetError();
-        
+
     // look for command in manual command map
     if( (i=binsearch(gl_manual_map,gl_manual_map_count,cmd))>=0 ) {
         gl_manual_map[i].cmdfn(nlhs,plhs,nrhs-1,(const mxArray**) prhs+1);
         if (debuglevel > 0) mogl_checkerrors(cmd, prhs);
         goto moglreturn;
     }
-    
+
     // look for command in auto command map
     if( (i=binsearch(gl_auto_map,gl_auto_map_count,cmd))>=0 ) {
         gl_auto_map[i].cmdfn(nlhs,plhs,nrhs-1,(const mxArray**) prhs+1);
         if (debuglevel > 0) mogl_checkerrors(cmd, prhs);
         goto moglreturn;
     }
-    
+
     // no match
     mogl_usageerr();
-    
+
     // moglreturn: Is the exit path of mogl. All execution ends at this point.
  moglreturn:
     return;
@@ -328,7 +328,7 @@ void mogl_glunsupported(const char* fname)
                     "MOGL-Error: or upgrade your gfx-hardware with more recent one to use this function. Aborted.\n\n", fname);
 
     glBeginLevel = 0;
-    
+
     // Exit to Matlab prompt with error message:
     mexErrMsgTxt(errtxt);
 }
@@ -338,27 +338,27 @@ void mogl_printfexit(const char* str)
 {
     // Reset recursion level for glBegin() / glEnd() statements:
     glBeginLevel = 0;
-    
+
     // Exit to Matlab prompt with error message in 'str':
     mexErrMsgTxt(str);
 }
 
-void mogl_checkerrors(const char* cmd, const mxArray *prhs[]) 
+void mogl_checkerrors(const char* cmd, const mxArray *prhs[])
 {
     char errtxt[10000];
     GLint err, status, handle;
-    
+
     // Reject no-op calls:
     if (debuglevel<=0) return;
-    
+
     // Accounting for glBegin and glEnd calls...
     if (strcmp(cmd, "glBegin")==0) glBeginLevel++;
     if (strcmp(cmd, "glEnd")==0 && glBeginLevel > 0) glBeginLevel--;
-    
+
     // Skip error-checking if we are in the middle of a glBegin(), glEnd() pair.
     // Calling glGetError() in between these two commands itself is an error!
     if (glBeginLevel > 0) return;
-    
+
     // Check for glErrors():
     if ((err=glGetError())>0) {
         // Last command caused an OpenGL error condition: Report it and abort.
@@ -367,7 +367,7 @@ void mogl_checkerrors(const char* cmd, const mxArray *prhs[])
         glBeginLevel = 0;
         mexErrMsgTxt(errtxt);
     }
-    
+
     // No OpenGL core system errors. Check if a special GLSL command was executed:
     if (strcmp(cmd, "glCompileShader")==0) {
         // A GLSL shader got just compiled. Check its compile status...
@@ -384,7 +384,7 @@ void mogl_checkerrors(const char* cmd, const mxArray *prhs[])
         // Exit to Matlab prompt with error message if an error happened.
         if (!status) mexErrMsgTxt("Shader compilation failed!"); else return;
     }
-        
+
     if (strcmp(cmd, "glLinkProgram")==0) {
         // A GLSL shader got just compiled. Check its compile status...
         handle = (GLuint) mxGetScalar(prhs[1]);
@@ -396,7 +396,7 @@ void mogl_checkerrors(const char* cmd, const mxArray *prhs[])
             printf("The program info log for program %i tells us the following:\n", handle);
             printf("%s \n\n", errtxt);
         }
-        
+
         if (debuglevel>1) {
             // Output shader info-log after program validation:
             glValidateProgram(handle);
@@ -455,7 +455,7 @@ void *PsychCallocTemp(size_t n, size_t size, int mlist)
   // overflow attack -- PTB would lose there badly anyway...
   size_t realsize = n * size + sizeof(void*) + sizeof(realsize);
 
-  // realsize has extra bytes allocated for our little header...  
+  // realsize has extra bytes allocated for our little header...
   if(NULL==(ret=calloc((size_t) 1, realsize))) {
     mexErrMsgTxt("MOGL-FATAL ERROR: Out of memory in PsychCallocTemp!\n");
   }
@@ -497,7 +497,7 @@ void PsychFreeTemp(void* ptr, int mlist)
   size_t* prevptr = NULL;
 
   if (ptr == NULL) return;
- 
+
   // Convert ptb supplied pointer ptr into real start
   // of our buffer, including our header:
   ptr = (unsigned char*) ptr - sizeof((unsigned char*) ptr) - sizeof(size_t);
@@ -533,7 +533,7 @@ void PsychFreeTemp(void* ptr, int mlist)
     // Some accounting:
     PTBTEMPMEMDEC(next[1], mlist);
     if (debuglevel > 1) mexPrintf("MOGL: Memlist %i: Freed buffer at %p, new total = %i.\n", mlist, ptrbackup, totalTempMemAllocated[mlist]); fflush(NULL);
-    
+
     // Release:
     free(ptr);
 
@@ -567,7 +567,7 @@ void PsychFreeAllTempMemory(int mlist)
 
     // Release buffer p:
     free(p);
-    
+
     // We're done with this buffer, next points to next one to release
     // or is NULL if all released...
   }
@@ -637,7 +637,7 @@ void* moglScalarToPtrOffset(const mxArray *m) {
     #ifndef MATLABR11
     if (mxIsUint64(m)) return((void*) (size_t) (((psych_uint64*) mxGetData(m))[0]));
 	#endif
-    
+
 	// Invalid input type - Error abort:
     glBeginLevel = 0;
     printf("MOGL-Command: %s\n", cmd);
